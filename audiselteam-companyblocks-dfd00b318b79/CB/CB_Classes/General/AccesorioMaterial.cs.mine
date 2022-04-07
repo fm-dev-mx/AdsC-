@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CB_Base.Classes
+{
+    class AccesorioMaterial : ModeloMySql
+    {
+
+        public AccesorioMaterial()
+        {
+            Tabla = "accesorios_material";
+        }
+
+        static public AccesorioMaterial Modelo()
+        {
+            return new AccesorioMaterial();
+        }
+
+        public List<Fila> TiposAccesorios(int idMaterial)
+        {
+            return null;
+        }
+
+    }
+}

@@ -1,0 +1,3822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.15.1\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.15.1\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D79714B2-B09E-49A4-A924-C2A3A66452A0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CB_Base</RootNamespace>
+    <AssemblyName>CompanyBlocks</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Companyblocks-02_64.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.3.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.3.2\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentFTP, Version=19.2.2.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentFTP.19.2.2\lib\net45\FluentFTP.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.43.0\lib\net45\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.43.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.43.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.43.0\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Gmail.v1, Version=1.43.0.1835, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Gmail.v1.1.43.0.1835\lib\net45\Google.Apis.Gmail.v1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2, Version=1.43.0.1602, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Oauth2.v2.1.43.0.1602\lib\net45\Google.Apis.Oauth2.v2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.43.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.43.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.ImageMagickObject">
+      <HintPath>obj\Debug\Interop.ImageMagickObject.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.2\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.4.3.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Magick.NET-Q16-AnyCPU.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.2.5.0\lib\net45\MailKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack.Core.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack.Shell.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeKit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.5.0\lib\net45\MimeKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SharpSvn">
+      <HintPath>..\packages\SharpSvn.1.9-x86.1.9007.3987.251\lib\net40\SharpSvn.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpSvn.UI">
+      <HintPath>..\packages\SharpSvn.1.9-x86.1.9007.3987.251\lib\net40\SharpSvn.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.sldworks, Version=25.3.0.59, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\CompanyBlocks\CB\bin\Debug\SolidWorks.Interop.sldworks.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst, Version=25.3.0.59, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\CompanyBlocks\CB\bin\Debug\SolidWorks.Interop.swconst.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swdocumentmgr, Version=25.3.0.59, Culture=neutral, PublicKeyToken=e52dfa2d3a1e978a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\CompanyBlocks\CB\bin\Debug\SolidWorks.Interop.swdocumentmgr.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc, Version=7.11.0.41040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.7.11.0\lib\net40\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.7.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.7.11.0\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=5.11.0.2040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Doc.7.11.0\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="zxing, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net45\zxing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net45\zxing.presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CB_Classes\Almacen\MovimientoAlmacen.cs" />
+    <Compile Include="CB_Classes\Calidad\Accion.cs" />
+    <Compile Include="CB_Classes\Calidad\CriterioRiesgo.cs" />
+    <Compile Include="CB_Classes\Calidad\DefectoFabricacion.cs" />
+    <Compile Include="CB_Classes\Calidad\KPIs\DatosKPI.cs" />
+    <Compile Include="CB_Classes\Calidad\KPIs\EstadisticaKPI.cs" />
+    <Compile Include="CB_Classes\Calidad\KPIs\IndicadorEstadistica.cs" />
+    <Compile Include="CB_Classes\Calidad\KPIs\IndicadorProceso.cs" />
+    <Compile Include="CB_Classes\Calidad\ProbabilidadConsecuencia.cs" />
+    <Compile Include="CB_Classes\Calidad\ProbabilidadRiesgo.cs" />
+    <Compile Include="CB_Classes\Calidad\Problema.cs" />
+    <Compile Include="CB_Classes\Calidad\ProblemaGrupo.cs" />
+    <Compile Include="CB_Classes\Calidad\Proceso.cs" />
+    <Compile Include="CB_Classes\Calidad\ProcesoSalida.cs" />
+    <Compile Include="CB_Classes\Calidad\TipoDefecto.cs" />
+    <Compile Include="CB_Classes\Calidad\TratamientoRiesgo.cs" />
+    <Compile Include="CB_Classes\Calidad\ValeSalida.cs" />
+    <Compile Include="CB_Classes\Calidad\ValeSalidaItem.cs" />
+    <Compile Include="CB_Classes\Clientes\Cliente.cs" />
+    <Compile Include="CB_Classes\Clientes\ClienteContacto.cs" />
+    <Compile Include="CB_Classes\Clientes\ClienteIndustria.cs" />
+    <Compile Include="CB_Classes\Clientes\Producto\ClienteProducto.cs" />
+    <Compile Include="CB_Classes\Clientes\Producto\ClienteProductoComponente.cs" />
+    <Compile Include="CB_Classes\Clientes\Producto\ClienteProductoModelo.cs" />
+    <Compile Include="CB_Classes\Clientes\Producto\ClienteProductoVariante.cs" />
+    <Compile Include="CB_Classes\Compras\RelacionMaterialRfq.cs" />
+    <Compile Include="CB_Classes\Compras\RfqConceptoPreferido.cs" />
+    <Compile Include="CB_Classes\Fabricacion\PlanoFueraSistema.cs" />
+    <Compile Include="CB_Classes\Fabricacion\PlanoFueraSistemaHerramentista.cs" />
+    <Compile Include="CB_Classes\Fabricacion\ProcesoHerramentista.cs" />
+    <Compile Include="CB_Classes\General\FormatosExcel.cs" />
+    <Compile Include="CB_Classes\General\GmailAuth2.cs" />
+    <Compile Include="CB_Classes\Librerias\LibreriaDme.cs" />
+    <Compile Include="CB_Classes\Librerias\LibreriaDmeArchivo.cs" />
+    <Compile Include="CB_Classes\Proyectos\MaterialProyectoCancelacion.cs" />
+    <Compile Include="CB_Classes\Proyectos\ModuloEstandar.cs" />
+    <Compile Include="CB_Classes\Proyectos\TareaInvolucrados.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionClinte.cs" />
+    <Compile Include="CB_Classes\PDF\PDFMakerNovo.cs" />
+    <Compile Include="CB_Classes\General\Fabricante.cs" />
+    <Compile Include="CB_Classes\Proyectos\CompraTipoLimiteParaOrdenar.cs" />
+    <Compile Include="CB_Classes\Fabricacion\AsignacionFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\FactorOperacionFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\FactorProcesoFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\MetaFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\OperacionFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\PlanoOperacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\RazonTiempoMuerto.cs" />
+    <Compile Include="CB_Classes\Fabricacion\TiempoFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\TiempoMuerto.cs" />
+    <Compile Include="CB_Classes\General\IncumplimientoProceso.cs" />
+    <Compile Include="CB_Classes\General\ListaIncumplimiento.cs" />
+    <Compile Include="CB_Classes\General\MaterialFabricante.cs" />
+    <Compile Include="CB_Classes\General\MaterialPresentacion.cs" />
+    <Compile Include="CB_Classes\General\OcupacionUsuario.cs" />
+    <Compile Include="CB_Classes\General\Sueldo.cs" />
+    <Compile Include="CB_Classes\General\UsuarioTurno.cs" />
+    <Compile Include="CB_Classes\GlobalPaths.cs" />
+    <Compile Include="CB_Classes\Material\CategoriaSubMaterial.cs" />
+    <Compile Include="CB_Classes\Material\ComprasTipos.cs" />
+    <Compile Include="CB_Classes\Proyectos\AjusteFecha.cs" />
+    <Compile Include="CB_Classes\Proyectos\MaterialHistorialReemplazo.cs" />
+    <Compile Include="CB_Classes\Proyectos\MaterialProyectoKpi.cs" />
+    <Compile Include="CB_Classes\Proyectos\Meta.cs" />
+    <Compile Include="CB_Classes\Proyectos\MetaEficiencia.cs" />
+    <Compile Include="CB_Classes\Proyectos\MetaEntregable.cs" />
+    <Compile Include="CB_Classes\Proyectos\ProyectoProceso.cs" />
+    <Compile Include="CB_Classes\Proyectos\RazonAjusteFecha.cs" />
+    <Compile Include="CB_Classes\RH\AnexoCapacitacion.cs" />
+    <Compile Include="CB_Classes\Calidad\Auditoria5s.cs" />
+    <Compile Include="CB_Classes\Calidad\Auditoria5sHistorial.cs" />
+    <Compile Include="CB_Classes\Calidad\CertificadoCalibracion.cs" />
+    <Compile Include="CB_Classes\Calidad\DocumentoSgc.cs" />
+    <Compile Include="CB_Classes\Calidad\InstrumentosMedicion.cs" />
+    <Compile Include="CB_Classes\Calidad\NoConformidad.cs" />
+    <Compile Include="CB_Classes\Calidad\PoliticaCalidad.cs" />
+    <Compile Include="CB_Classes\Compras\RequisicionAdjunto.cs" />
+    <Compile Include="CB_Classes\Compras\TerminoPagoProveedor.cs" />
+    <Compile Include="CB_Classes\Ensamble\ActividadEnsamble.cs" />
+    <Compile Include="CB_Classes\Fabricacion\ProcesoCotizacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\Tetris.cs" />
+    <Compile Include="CB_Classes\Ensamble\TipoActividadEnsamble.cs" />
+    <Compile Include="CB_Classes\Fabricacion\Direccion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\Mqr.cs" />
+    <Compile Include="CB_Classes\Fabricacion\MqrConcepto.cs" />
+    <Compile Include="CB_Classes\Fabricacion\OrdenConcepto.cs" />
+    <Compile Include="CB_Classes\Fabricacion\OrdenTrabajo.cs" />
+    <Compile Include="CB_Classes\Fabricacion\OrdenTratamiento.cs" />
+    <Compile Include="CB_Classes\Fabricacion\RangoSize.cs" />
+    <Compile Include="CB_Classes\Fabricacion\TetrisPlano.cs" />
+    <Compile Include="CB_Classes\Fabricacion\ValeSalidaPieza.cs" />
+    <Compile Include="CB_Classes\Finanzas\FacturaCompra.cs" />
+    <Compile Include="CB_Classes\Finanzas\FacturasFabricacion.cs" />
+    <Compile Include="CB_Classes\General\AccesorioMaterial.cs" />
+    <Compile Include="CB_Classes\General\ActividadMantenimiento.cs" />
+    <Compile Include="CB_Classes\General\Archivo.cs" />
+    <Compile Include="CB_Classes\General\ArchivoSolidWorks.cs" />
+    <Compile Include="CB_Classes\General\CheckitemsMantenimiento.cs" />
+    <Compile Include="CB_Classes\General\Configuracion.cs" />
+    <Compile Include="CB_Classes\General\ConfiguracionDataGridView.cs" />
+    <Compile Include="CB_Classes\General\Elemento.cs" />
+    <Compile Include="CB_Classes\General\ElementoTipo.cs" />
+    <Compile Include="CB_Classes\General\Evaluacion.cs" />
+    <Compile Include="CB_Classes\General\EvaluacionHabilidad.cs" />
+    <Compile Include="CB_Classes\General\FractionalNumber.cs" />
+    <Compile Include="CB_Classes\General\Mantenimiento.cs" />
+    <Compile Include="CB_Classes\General\MantenimientoTopico.cs" />
+    <Compile Include="CB_Classes\General\OrdenTrabajoMantenimiento.cs" />
+    <Compile Include="CB_Classes\General\ParteEstandar.cs" />
+    <Compile Include="CB_Classes\General\ReporteCorreo.cs" />
+    <Compile Include="CB_Classes\General\SolidoMaterial.cs" />
+    <Compile Include="CB_Classes\General\SolidWorksAPI.cs" />
+    <Compile Include="CB_Classes\General\SubensambleEstandar.cs" />
+    <Compile Include="CB_Classes\Html\HtmlFontColor.cs" />
+    <Compile Include="CB_Classes\Html\HtmlImagen.cs" />
+    <Compile Include="CB_Classes\Html\HtmlParrafo.cs" />
+    <Compile Include="CB_Classes\Mantenimiento\Vehiculo.cs" />
+    <Compile Include="CB_Classes\Mantenimiento\Edificio.cs" />
+    <Compile Include="CB_Classes\Proveedores\EvaluacionHabilidadProveedor.cs" />
+    <Compile Include="CB_Classes\Proveedores\EvaluacionProveedor.cs" />
+    <Compile Include="CB_Classes\Proyectos\CambioDiseno.cs" />
+    <Compile Include="CB_Classes\Proyectos\EvidenciaLiberacionModulo.cs" />
+    <Compile Include="CB_Classes\Proyectos\RevisionModulo.cs" />
+    <Compile Include="CB_Classes\RH\ActividadesTiempoExtra.cs" />
+    <Compile Include="CB_Classes\RH\Capacitacion.cs" />
+    <Compile Include="CB_Classes\RH\CapacitacionParticipante.cs" />
+    <Compile Include="CB_Classes\RH\Competencia.cs" />
+    <Compile Include="CB_Classes\RH\Encuesta.cs" />
+    <Compile Include="CB_Classes\RH\EncuestaPregunta.cs" />
+    <Compile Include="CB_Classes\RH\EquipoTrabajo.cs" />
+    <Compile Include="CB_Classes\RH\EquipoTrabajoIntegrantes.cs" />
+    <Compile Include="CB_Classes\RH\PerfilHabilidad.cs" />
+    <Compile Include="CB_Classes\RH\PerfilPuesto.cs" />
+    <Compile Include="CB_Classes\RH\PlanCapacitacion.cs" />
+    <Compile Include="CB_Classes\RH\PlanCapacitacionCompetencia.cs" />
+    <Compile Include="CB_Classes\RH\PlantillaEncuesta.cs" />
+    <Compile Include="CB_Classes\RH\PlantillaEncuestaPregunta.cs" />
+    <Compile Include="CB_Classes\RH\PracticaCapacitacion.cs" />
+    <Compile Include="CB_Classes\RH\RazonBajaUsuario.cs" />
+    <Compile Include="CB_Classes\RH\TemaCapacitacion.cs" />
+    <Compile Include="CB_Classes\RH\TipoDocumentoUsuario.cs" />
+    <Compile Include="CB_Classes\Servicio\TicketServicio.cs" />
+    <Compile Include="CB_Classes\General\ServidorFtp.cs" />
+    <Compile Include="CB_Classes\Sistemas\EquipoComputo.cs" />
+    <Compile Include="CB_Classes\Sistemas\EquipoComputoUsuario.cs" />
+    <Compile Include="CB_Classes\MySQL\Filtro.cs" />
+    <Compile Include="CB_Classes\PDF\PDFMaker.cs" />
+    <Compile Include="CB_Classes\Proyectos\ArchivoBug.cs" />
+    <Compile Include="CB_Classes\Proyectos\ArchivoRequerimiento.cs" />
+    <Compile Include="CB_Classes\Proyectos\ArchivoVariante.cs" />
+    <Compile Include="CB_Classes\Proyectos\Bug.cs" />
+    <Compile Include="CB_Classes\Proyectos\BugAdjunto.cs" />
+    <Compile Include="CB_Classes\Proyectos\BugNota.cs" />
+    <Compile Include="CB_Classes\Proyectos\BugResponsable.cs" />
+    <Compile Include="CB_Classes\Proyectos\ComponentesProyecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\ComponenteVariante.cs" />
+    <Compile Include="CB_Classes\Proyectos\EtapaProyecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\FallaCausa.cs" />
+    <Compile Include="CB_Classes\Proyectos\FallaControles.cs" />
+    <Compile Include="CB_Classes\Proyectos\FallaEfecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\FechaModulo.cs" />
+    <Compile Include="CB_Classes\Proyectos\ImagenModulo.cs" />
+    <Compile Include="CB_Classes\Proyectos\JuntaEvento.cs" />
+    <Compile Include="CB_Classes\Proyectos\JuntaInvitado.cs" />
+    <Compile Include="CB_Classes\Proyectos\ModelosProyecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\ModoFalla.cs" />
+    <Compile Include="CB_Classes\Proyectos\ModuloPaso.cs" />
+    <Compile Include="CB_Classes\Proyectos\PoProyecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\RequerimientoAdjunto.cs" />
+    <Compile Include="CB_Classes\Proyectos\RequerimientoNota.cs" />
+    <Compile Include="CB_Classes\Proyectos\RequerimientoResponsable.cs" />
+    <Compile Include="CB_Classes\Proyectos\SolidworksCp.cs" />
+    <Compile Include="CB_Classes\Proyectos\SolidWorksProyecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\SubensambleParte.cs" />
+    <Compile Include="CB_Classes\Proyectos\SubensambleProyecto.cs" />
+    <Compile Include="CB_Classes\Proyectos\TareasResponsables.cs" />
+    <Compile Include="CB_Classes\Proyectos\TareasSeguimiento.cs" />
+    <Compile Include="CB_Classes\Proyectos\TareasTopico.cs" />
+    <Compile Include="CB_Classes\Proyectos\TerminoPagoCliente.cs" />
+    <Compile Include="CB_Classes\Proyectos\Topico.cs" />
+    <Compile Include="CB_Classes\General\TopicoHabilidad.cs" />
+    <Compile Include="CB_Classes\Ventas\Cotizacion.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionAlcance.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionComponenteEntrada.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionComponenteSalida.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionEntrada.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionModelos.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionPokayoke.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionProcesoManufactura.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionSalida.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionSubensambleEntrada.cs" />
+    <Compile Include="CB_Classes\Ventas\CotizacionSubensambleSalida.cs" />
+    <Compile Include="CB_Classes\Ventas\Industria.cs" />
+    <Compile Include="CB_Classes\Ventas\ModuloEstandarCaracteristica.cs" />
+    <Compile Include="CB_Classes\Ventas\ModuloEstandarCaracteristicaOpcion.cs" />
+    <Compile Include="CB_Classes\Ventas\ModuloEstandarCotizacion.cs" />
+    <Compile Include="CB_Classes\Ventas\ModuloEstandarOpcion.cs" />
+    <Compile Include="CB_Classes\Ventas\PokayokeAlcance.cs" />
+    <Compile Include="CB_Classes\Ventas\PokayokeAlcanceCotizacion.cs" />
+    <Compile Include="CB_Classes\Ventas\PokayokeMetodo.cs" />
+    <Compile Include="CB_Classes\Ventas\PokayokeTarget.cs" />
+    <Compile Include="CB_Classes\Ventas\ProcesoAlcance.cs" />
+    <Compile Include="CB_Classes\Ventas\Producto.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoComponente.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoModelo.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoSubensamble.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoSubensambleComponente.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoSubensamblesSubensamble.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoSubensambleVariante.cs" />
+    <Compile Include="CB_Classes\Ventas\ProductoVariante.cs" />
+    <Compile Include="CB_Classes\Ventas\TipoProyecto.cs" />
+    <Compile Include="CB_Controles\AudiselBotonSalida.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselBotonSalida.Designer.cs">
+      <DependentUpon>AudiselBotonSalida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselColorSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselColorSelector.Designer.cs">
+      <DependentUpon>AudiselColorSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselComboBox.Designer.cs">
+      <DependentUpon>AudiselComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselListViewItem.cs" />
+    <Compile Include="CB_Controles\AudiselListViewItem.Designer.cs">
+      <DependentUpon>AudiselListViewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselNotification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselNotification.Designer.cs">
+      <DependentUpon>AudiselNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselTituloForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselTituloForm.designer.cs">
+      <DependentUpon>AudiselTituloForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\AudiselTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\NiuTriViu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\NiuTriViu.Designer.cs">
+      <DependentUpon>NiuTriViu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\UserControlTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\UserControlTest.Designer.cs">
+      <DependentUpon>UserControlTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Controles\Utilerias\ControlAlturaFija.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CB_Controles\Utilerias\DesignerAlturaFija.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD1.Designer.cs">
+      <DependentUpon>Frm8DsD1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD2.Designer.cs">
+      <DependentUpon>Frm8DsD2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD3.Designer.cs">
+      <DependentUpon>Frm8DsD3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD4.Designer.cs">
+      <DependentUpon>Frm8DsD4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD5.Designer.cs">
+      <DependentUpon>Frm8DsD5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\8Ds\Frm8DsD6.Designer.cs">
+      <DependentUpon>Frm8DsD6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAgregarPoliticaCalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAgregarPoliticaCalidad.Designer.cs">
+      <DependentUpon>FrmAgregarPoliticaCalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAnalisisNcCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAnalisisNcCliente.designer.cs">
+      <DependentUpon>FrmAnalisisNcCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAnalisisNcInterna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAnalisisNcInterna.designer.cs">
+      <DependentUpon>FrmAnalisisNcInterna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAuditar5S.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmAuditar5S.designer.cs">
+      <DependentUpon>FrmAuditar5S.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmCrearNuevoDefecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmCrearNuevoDefecto.designer.cs">
+      <DependentUpon>FrmCrearNuevoDefecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmComentariosNoConformidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmComentariosNoConformidad.designer.cs">
+      <DependentUpon>FrmComentariosNoConformidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmGenerarValeSalidaPendienteTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmGenerarValeSalidaPendienteTratamiento.Designer.cs">
+      <DependentUpon>FrmGenerarValeSalidaPendienteTratamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmInspeccionarEnsambleModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmInspeccionarEnsambleModulo.designer.cs">
+      <DependentUpon>FrmInspeccionarEnsambleModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmInspeccionPiezaFabricada2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmInspeccionPiezaFabricada2.designer.cs">
+      <DependentUpon>FrmInspeccionPiezaFabricada2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmInspeccionPiezaFabricada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmInspeccionPiezaFabricada.designer.cs">
+      <DependentUpon>FrmInspeccionPiezaFabricada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmLiberarDefecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmLiberarDefecto.designer.cs">
+      <DependentUpon>FrmLiberarDefecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmLiberarNoConformidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmLiberarNoConformidad.designer.cs">
+      <DependentUpon>FrmLiberarNoConformidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmManualDeCalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmManualDeCalidad.Designer.cs">
+      <DependentUpon>FrmManualDeCalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmMonitorCalidad2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmMonitorCalidad2.designer.cs">
+      <DependentUpon>FrmMonitorCalidad2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmMonitorCalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmMonitorCalidad.designer.cs">
+      <DependentUpon>FrmMonitorCalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmNuevoPuntoInspeccion5S.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmNuevoPuntoInspeccion5S.designer.cs">
+      <DependentUpon>FrmNuevoPuntoInspeccion5S.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmRecibirPiezaTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmRecibirPiezaTratamiento.Designer.cs">
+      <DependentUpon>FrmRecibirPiezaTratamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmRegistrarArchivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmRegistrarArchivo.Designer.cs">
+      <DependentUpon>FrmRegistrarArchivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmResultadosInspeccion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmResultadosInspeccion2.designer.cs">
+      <DependentUpon>FrmResultadosInspeccion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmResultadosInspeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmResultadosInspeccion.designer.cs">
+      <DependentUpon>FrmResultadosInspeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmValeSalidaCalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\FrmValeSalidaCalidad.Designer.cs">
+      <DependentUpon>FrmValeSalidaCalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmAccionesKPIs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmAccionesKPIs.designer.cs">
+      <DependentUpon>FrmAccionesKPIs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmAgregarAccionesIndicadorKPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmAgregarAccionesIndicadorKPI.Designer.cs">
+      <DependentUpon>FrmAgregarAccionesIndicadorKPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmBuscadorKPIs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmBuscadorKPIs.designer.cs">
+      <DependentUpon>FrmBuscadorKPIs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmVisorKPILinea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Calidad\KPIs\FrmVisorKPILinea.designer.cs">
+      <DependentUpon>FrmVisorKPILinea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\FrmAdministrarProductoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\FrmAdministrarProductoCliente.designer.cs">
+      <DependentUpon>FrmAdministrarProductoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmEditarProductoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmEditarProductoCliente.Designer.cs">
+      <DependentUpon>FrmEditarProductoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmNuevoComponenteProductoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmNuevoComponenteProductoCliente.Designer.cs">
+      <DependentUpon>FrmNuevoComponenteProductoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmNuevoModeloProductoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmNuevoModeloProductoCliente.Designer.cs">
+      <DependentUpon>FrmNuevoModeloProductoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmNuevoProductoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\Producto\FrmNuevoProductoCliente.Designer.cs">
+      <DependentUpon>FrmNuevoProductoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarPo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarPo.Designer.cs">
+      <DependentUpon>FrmAgregarPo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarRfq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarRfq.Designer.cs">
+      <DependentUpon>FrmAgregarRfq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarTerminoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarTerminoPago.Designer.cs">
+      <DependentUpon>FrmAgregarTerminoPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmCancelarPo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmCancelarPo.Designer.cs">
+      <DependentUpon>FrmCancelarPo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmDesvincularProveedorFavorito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmDesvincularProveedorFavorito.Designer.cs">
+      <DependentUpon>FrmDesvincularProveedorFavorito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmDesglosarPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmDesglosarPO.designer.cs">
+      <DependentUpon>FrmDesglosarPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmMetasCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmMetasCompras.Designer.cs">
+      <DependentUpon>FrmMetasCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmMonitorCompras2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmMonitorCompras2.designer.cs">
+      <DependentUpon>FrmMonitorCompras2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmSeleccionarProveedorMultiplesRequisiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmSeleccionarProveedorMultiplesRequisiciones.Designer.cs">
+      <DependentUpon>FrmSeleccionarProveedorMultiplesRequisiciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmSeleccionarProveedorParaPieza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmSeleccionarProveedorParaPieza.Designer.cs">
+      <DependentUpon>FrmSeleccionarProveedorParaPieza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmSelectorFechaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmSelectorFechaCompra.Designer.cs">
+      <DependentUpon>FrmSelectorFechaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Debug\FrmActualizarMetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Debug\FrmActualizarMetas.Designer.cs">
+      <DependentUpon>FrmActualizarMetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmNuevaActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmNuevaActividad.Designer.cs">
+      <DependentUpon>FrmNuevaActividad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmRazonRetrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmRazonRetrabajo.Designer.cs">
+      <DependentUpon>FrmRazonRetrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmSeguimientoEnsamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmSeguimientoEnsamble.Designer.cs">
+      <DependentUpon>FrmSeguimientoEnsamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmRegistrarPlanoFueraDelSistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmRegistrarPlanoFueraDelSistema.Designer.cs">
+      <DependentUpon>FrmRegistrarPlanoFueraDelSistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmReporteFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmReporteFabricacion.Designer.cs">
+      <DependentUpon>FrmReporteFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmTiempoFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmTiempoFabricacion.Designer.cs">
+      <DependentUpon>FrmTiempoFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAjustarFactoresProcesoFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAjustarFactoresProcesoFabricacion.Designer.cs">
+      <DependentUpon>FrmAjustarFactoresProcesoFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAjustarTiemposFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAjustarTiemposFabricacion.designer.cs">
+      <DependentUpon>FrmAjustarTiemposFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignacionesFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignacionesFabricacion.Designer.cs">
+      <DependentUpon>FrmAsignacionesFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignarMultiplesProcesosFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignarMultiplesProcesosFabricacion.Designer.cs">
+      <DependentUpon>FrmAsignarMultiplesProcesosFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignarProcesoFabricacion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignarProcesoFabricacion2.Designer.cs">
+      <DependentUpon>FrmAsignarProcesoFabricacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmEstatusPlanos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmEstatusPlanos.Designer.cs">
+      <DependentUpon>FrmEstatusPlanos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmEstimarTiempoFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmEstimarTiempoFabricacion.Designer.cs">
+      <DependentUpon>FrmEstimarTiempoFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignarProcesoFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAsignarProcesoFabricacion.Designer.cs">
+      <DependentUpon>FrmAsignarProcesoFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAgregarProcesoPlano2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAgregarProcesoPlano2.Designer.cs">
+      <DependentUpon>FrmAgregarProcesoPlano2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmMetasFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmMetasFabricacion.designer.cs">
+      <DependentUpon>FrmMetasFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmMonitorFabricacion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmMonitorFabricacion2.designer.cs">
+      <DependentUpon>FrmMonitorFabricacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevaMetaFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevaMetaFabricacion.designer.cs">
+      <DependentUpon>FrmNuevaMetaFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevaOperacionFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevaOperacionFabricacion.designer.cs">
+      <DependentUpon>FrmNuevaOperacionFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmEntregarPiezaFabricada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmEntregarPiezaFabricada.Designer.cs">
+      <DependentUpon>FrmEntregarPiezaFabricada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmGenerarValeSalidaFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmGenerarValeSalidaFabricacion.Designer.cs">
+      <DependentUpon>FrmGenerarValeSalidaFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevoFactor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevoFactor.Designer.cs">
+      <DependentUpon>FrmNuevoFactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevoFactorValor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmNuevoFactorValor.Designer.cs">
+      <DependentUpon>FrmNuevoFactorValor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmPlanoUrgencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmPlanoUrgencia.Designer.cs">
+      <DependentUpon>FrmPlanoUrgencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmProduccion.Designer.cs">
+      <DependentUpon>FrmProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmSeleccionarMaterialFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmSeleccionarMaterialFabricacion.designer.cs">
+      <DependentUpon>FrmSeleccionarMaterialFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmDetenerProcesoFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmDetenerProcesoFabricacion.Designer.cs">
+      <DependentUpon>FrmDetenerProcesoFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmProcesosFabricacionAsignados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmProcesosFabricacionAsignados.designer.cs">
+      <DependentUpon>FrmProcesosFabricacionAsignados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmProcesosFabricacionTablet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmProcesosFabricacionTablet.Designer.cs">
+      <DependentUpon>FrmProcesosFabricacionTablet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmTerminalFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\Terminal\FrmTerminalFabricacion.designer.cs">
+      <DependentUpon>FrmTerminalFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmGenerarReportePO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmGenerarReportePO.designer.cs">
+      <DependentUpon>FrmGenerarReportePO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmRevisionFinanciera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmRevisionFinanciera.Designer.cs">
+      <DependentUpon>FrmRevisionFinanciera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAdministrarFabricantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAdministrarFabricantes.Designer.cs">
+      <DependentUpon>FrmAdministrarFabricantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAgregarPuntosPrograma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAgregarPuntosPrograma.Designer.cs">
+      <DependentUpon>FrmAgregarPuntosPrograma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBajarArchivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBajarArchivos.Designer.cs">
+      <DependentUpon>FrmBajarArchivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscadorMaterialDescripcion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscadorMaterialDescripcion2.Designer.cs">
+      <DependentUpon>FrmBuscadorMaterialDescripcion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscarMaterial.Designer.cs">
+      <DependentUpon>FrmBuscarMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscarDocumentoCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscarDocumentoCompras.Designer.cs">
+      <DependentUpon>FrmBuscarDocumentoCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscarRequisicionMiscelaneos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmBuscarRequisicionMiscelaneos.Designer.cs">
+      <DependentUpon>FrmBuscarRequisicionMiscelaneos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCalendario.designer.cs">
+      <DependentUpon>FrmCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCatalogoMaterial2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCatalogoMaterial2.designer.cs">
+      <DependentUpon>FrmCatalogoMaterial2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCerrarProceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCerrarProceso.Designer.cs">
+      <DependentUpon>FrmCerrarProceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCompararSolidWorks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCompararSolidWorks.designer.cs">
+      <DependentUpon>FrmCompararSolidWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfiguracion.Designer.cs">
+      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfirmarSeguro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfirmarSeguro.Designer.cs">
+      <DependentUpon>FrmConfirmarSeguro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConsultarEncuesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConsultarEncuesta.Designer.cs">
+      <DependentUpon>FrmConsultarEncuesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmDetallesMaterialCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmDetallesMaterialCatalogo.Designer.cs">
+      <DependentUpon>FrmDetallesMaterialCatalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmDialogoConfirmacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmDialogoConfirmacion.Designer.cs">
+      <DependentUpon>FrmDialogoConfirmacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEscanear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEscanear.designer.cs">
+      <DependentUpon>FrmEscanear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEscanearPlano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEscanearPlano.Designer.cs">
+      <DependentUpon>FrmEscanearPlano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Classes\General\Modulo.cs" />
+    <Compile Include="CB_Classes\Proyectos\RequerimientoKeyitem.cs" />
+    <Compile Include="CB_Classes\Proyectos\RequerimientoRestriccion.cs" />
+    <Compile Include="CB_Classes\General\Evento.cs" />
+    <Compile Include="CB_Classes\General\EventoNotificacion.cs" />
+    <Compile Include="CB_Classes\General\Habilidad.cs" />
+    <Compile Include="CB_Classes\General\RolHabilidad.cs" />
+    <Compile Include="CB_Classes\Proyectos\Requerimiento.cs" />
+    <Compile Include="CB_Classes\Proyectos\RequerimientoParametro.cs" />
+    <Compile Include="CB_Forms\Almacen\FrmMovimientosAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Almacen\FrmMovimientosAlmacen.Designer.cs">
+      <DependentUpon>FrmMovimientosAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Classes\Almacen\MaterialStock.cs" />
+    <Compile Include="CB_Classes\Compras\ArchivoRfq.cs" />
+    <Compile Include="CB_Classes\Compras\PoMaterial.cs" />
+    <Compile Include="CB_Classes\Compras\RfqConcepto.cs" />
+    <Compile Include="CB_Classes\Compras\RfqMaterial.cs" />
+    <Compile Include="CB_Classes\Fabricacion\ArchivoPlanoDXF.cs" />
+    <Compile Include="CB_Classes\Fabricacion\DimensionCritica.cs" />
+    <Compile Include="CB_Classes\Fabricacion\MaquinaHerramienta.cs" />
+    <Compile Include="CB_Classes\Fabricacion\MaquinaHerramientaProceso.cs" />
+    <Compile Include="CB_Classes\Fabricacion\MaterialMaquinado.cs" />
+    <Compile Include="CB_Classes\Fabricacion\PlanoProceso.cs" />
+    <Compile Include="CB_Classes\Fabricacion\ProcesoFabricacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\TipoInstrumentoMedicion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\TratamientoMaterial.cs" />
+    <Compile Include="CB_Classes\General\CatalogoMaterial.cs" />
+    <Compile Include="CB_Classes\General\CategoriaMaterial.cs" />
+    <Compile Include="CB_Classes\General\FormatosPDF.cs" />
+    <Compile Include="CB_Classes\General\Licencias.cs" />
+    <Compile Include="CB_Classes\General\MaterialProyecto.cs" />
+    <Compile Include="CB_Classes\General\Notificaciones.cs" />
+    <Compile Include="CB_Classes\General\Privilegio.cs" />
+    <Compile Include="CB_Classes\General\Redes.cs" />
+    <Compile Include="CB_Classes\General\Rol.cs" />
+    <Compile Include="CB_Classes\General\RolPrivilegio.cs" />
+    <Compile Include="CB_Classes\General\SubcategoriaMaterial.cs" />
+    <Compile Include="CB_Classes\General\Usuario.cs" />
+    <Compile Include="CB_Classes\Glosario.cs" />
+    <Compile Include="CB_Classes\Fabricacion\ArchivoPlano.cs" />
+    <Compile Include="CB_Classes\Fabricacion\PlanoCotizacion.cs" />
+    <Compile Include="CB_Classes\Fabricacion\PlanoProyecto.cs" />
+    <Compile Include="CB_Classes\Html\HtmlDoc.cs" />
+    <Compile Include="CB_Classes\Html\HtmlEntity.cs" />
+    <Compile Include="CB_Classes\Html\HtmlTable.cs" />
+    <Compile Include="CB_Classes\Html\HtmlTableData.cs" />
+    <Compile Include="CB_Classes\Html\HtmlTableHead.cs" />
+    <Compile Include="CB_Classes\Html\HtmlTableRow.cs" />
+    <Compile Include="CB_Classes\MySQL\Fila.cs" />
+    <Compile Include="CB_Classes\Global.cs" />
+    <Compile Include="CB_Classes\MySQL\ModeloMySql.cs" />
+    <Compile Include="CB_Classes\Proveedores\Proveedor.cs" />
+    <Compile Include="CB_Classes\Proveedores\ProveedorContacto.cs" />
+    <Compile Include="CB_Classes\Proveedores\ProveedorFabricacion.cs" />
+    <Compile Include="CB_Classes\Proyectos\Etapa.cs" />
+    <Compile Include="CB_Classes\General\NotificacionesCorreo.cs" />
+    <Compile Include="CB_Classes\Proyectos\Proyecto.cs" />
+    <Compile Include="CB_Forms\Almacen\FrmAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Almacen\FrmAlmacen.Designer.cs">
+      <DependentUpon>FrmAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Almacen\FrmAltaAlmacenDesdePO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Almacen\FrmAltaAlmacenDesdePO.Designer.cs">
+      <DependentUpon>FrmAltaAlmacenDesdePO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Almacen\FrmBajaAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Almacen\FrmBajaAlmacen.Designer.cs">
+      <DependentUpon>FrmBajaAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Classes\Compras\ArchivoPo.cs" />
+    <Compile Include="CB_Forms\Clientes\FrmAdministrarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Clientes\FrmAdministrarClientes.Designer.cs">
+      <DependentUpon>FrmAdministrarClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarPartidaPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarPartidaPO.Designer.cs">
+      <DependentUpon>FrmAgregarPartidaPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarPartidaRFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmAgregarPartidaRFQ.Designer.cs">
+      <DependentUpon>FrmAgregarPartidaRFQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmCapturarCotizacionMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmCapturarCotizacionMaterial.Designer.cs">
+      <DependentUpon>FrmCapturarCotizacionMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmCopiarRFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmCopiarRFQ.Designer.cs">
+      <DependentUpon>FrmCopiarRFQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmDesglosarPartidaPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmDesglosarPartidaPO.Designer.cs">
+      <DependentUpon>FrmDesglosarPartidaPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmEnviarPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmEnviarPO.Designer.cs">
+      <DependentUpon>FrmEnviarPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmEnviarRFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmEnviarRFQ.Designer.cs">
+      <DependentUpon>FrmEnviarRFQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmPOs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmPOs.Designer.cs">
+      <DependentUpon>FrmPOs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmRFQs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmRFQs.Designer.cs">
+      <DependentUpon>FrmRFQs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmVerCotizacionesMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmVerCotizacionesMaterial.Designer.cs">
+      <DependentUpon>FrmVerCotizacionesMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmMonitorEnsamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ensamble\FrmMonitorEnsamble.Designer.cs">
+      <DependentUpon>FrmMonitorEnsamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAgregarProcesoPlano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmAgregarProcesoPlano.Designer.cs">
+      <DependentUpon>FrmAgregarProcesoPlano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmDetallesPlanoFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmDetallesPlanoFabricacion.Designer.cs">
+      <DependentUpon>FrmDetallesPlanoFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmActualizarEstatusCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmActualizarEstatusCuenta.Designer.cs">
+      <DependentUpon>FrmActualizarEstatusCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmCuentasPorPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmCuentasPorPagar.Designer.cs">
+      <DependentUpon>FrmCuentasPorPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmHistorialPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmHistorialPagos.Designer.cs">
+      <DependentUpon>FrmHistorialPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmPagarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Finanzas\FrmPagarFactura.Designer.cs">
+      <DependentUpon>FrmPagarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAccesoriosMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAccesoriosMaterial.designer.cs">
+      <DependentUpon>FrmAccesoriosMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAdministrarRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAdministrarRoles.Designer.cs">
+      <DependentUpon>FrmAdministrarRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAdministrarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAdministrarUsuarios.Designer.cs">
+      <DependentUpon>FrmAdministrarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAsignarHabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAsignarHabilidad.Designer.cs">
+      <DependentUpon>FrmAsignarHabilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCantidadMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCantidadMaterial.Designer.cs">
+      <DependentUpon>FrmCantidadMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfigurarAccesoriosMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfigurarAccesoriosMaterial.designer.cs">
+      <DependentUpon>FrmConfigurarAccesoriosMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmDetallesMaterialProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmDetallesMaterialProyecto.Designer.cs">
+      <DependentUpon>FrmDetallesMaterialProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEditarContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEditarContacto.Designer.cs">
+      <DependentUpon>FrmEditarContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEstadisticasMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEstadisticasMaterial.designer.cs">
+      <DependentUpon>FrmEstadisticasMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEvaluarTopicosHabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmEvaluarTopicosHabilidad.Designer.cs">
+      <DependentUpon>FrmEvaluarTopicosHabilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmFiltrarDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmFiltrarDatos.designer.cs">
+      <DependentUpon>FrmFiltrarDatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmHistorialMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmHistorialMantenimiento.Designer.cs">
+      <DependentUpon>FrmHistorialMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIncumplimientoProceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIncumplimientoProceso.designer.cs">
+      <DependentUpon>FrmIncumplimientoProceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarComentario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarComentario.Designer.cs">
+      <DependentUpon>FrmIngresarComentario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarContrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarContrasena.Designer.cs">
+      <DependentUpon>FrmIngresarContrasena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarSubEnsamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarSubEnsamble.Designer.cs">
+      <DependentUpon>FrmIngresarSubEnsamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarSubensamble2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmIngresarSubensamble2.Designer.cs">
+      <DependentUpon>FrmIngresarSubensamble2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmInicio.Designer.cs">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmMiMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmMiMonitor.Designer.cs">
+      <DependentUpon>FrmMiMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRegistrarMaterialUrgente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRegistrarMaterialUrgente.Designer.cs">
+      <DependentUpon>FrmRegistrarMaterialUrgente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRestringirNumeroParte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRestringirNumeroParte.Designer.cs">
+      <DependentUpon>FrmRestringirNumeroParte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Librerias\FrmRegistrarLibreriaDme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Librerias\FrmRegistrarLibreriaDme.Designer.cs">
+      <DependentUpon>FrmRegistrarLibreriaDme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Librerias\FrmConfigurarLibreriaDme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Librerias\FrmConfigurarLibreriaDme.Designer.cs">
+      <DependentUpon>FrmConfigurarLibreriaDme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmLineaTamano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmLineaTamano.Designer.cs">
+      <DependentUpon>FrmLineaTamano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmNuevaActividadMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmNuevaActividadMantenimiento.Designer.cs">
+      <DependentUpon>FrmNuevaActividadMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmNuevaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmNuevaCategoria.Designer.cs">
+      <DependentUpon>FrmNuevaCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRealizarEncuesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRealizarEncuesta.Designer.cs">
+      <DependentUpon>FrmRealizarEncuesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConsultarAccionesAuditoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConsultarAccionesAuditoria.Designer.cs">
+      <DependentUpon>FrmConsultarAccionesAuditoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRegistrarFabricante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRegistrarFabricante.Designer.cs">
+      <DependentUpon>FrmRegistrarFabricante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarMaterialCatalogo2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarMaterialCatalogo2.Designer.cs">
+      <DependentUpon>FrmSeleccionarMaterialCatalogo2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmVincularRequisicionesRfq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmVincularRequisicionesRfq.Designer.cs">
+      <DependentUpon>FrmVincularRequisicionesRfq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmVisorImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmVisorImagen.designer.cs">
+      <DependentUpon>FrmVisorImagen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Librerias\FrmLibreriasDme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Librerias\FrmLibreriasDme.Designer.cs">
+      <DependentUpon>FrmLibreriasDme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Mantenimiento\FrmMonitorMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Mantenimiento\FrmMonitorMantenimiento.Designer.cs">
+      <DependentUpon>FrmMonitorMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Operaciones\FrmMonitorOperaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Operaciones\FrmMonitorOperaciones.Designer.cs">
+      <DependentUpon>FrmMonitorOperaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAgregarCorreoAlterno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAgregarCorreoAlterno.Designer.cs">
+      <DependentUpon>FrmAgregarCorreoAlterno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmBuscadorNumeroPartePorProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmBuscadorNumeroPartePorProyecto.Designer.cs">
+      <DependentUpon>FrmBuscadorNumeroPartePorProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmMostrarMaterialCancelado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmMostrarMaterialCancelado.Designer.cs">
+      <DependentUpon>FrmMostrarMaterialCancelado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmTareas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmTareas.Designer.cs">
+      <DependentUpon>FrmTareas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmAgregarPokayoke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmAgregarPokayoke.Designer.cs">
+      <DependentUpon>FrmAgregarPokayoke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmAlcanceProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmAlcanceProyecto.Designer.cs">
+      <DependentUpon>FrmAlcanceProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmCostosComprasProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmCostosComprasProyecto.Designer.cs">
+      <DependentUpon>FrmCostosComprasProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmCrearNuevoAlcance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmCrearNuevoAlcance.Designer.cs">
+      <DependentUpon>FrmCrearNuevoAlcance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmEditarCotizacion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmEditarCotizacion2.designer.cs">
+      <DependentUpon>FrmEditarCotizacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmEvaluacionesProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmEvaluacionesProveedor.Designer.cs">
+      <DependentUpon>FrmEvaluacionesProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmEvaluarDesempenoProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmEvaluarDesempenoProveedores.Designer.cs">
+      <DependentUpon>FrmEvaluarDesempenoProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmEvaluarHabilidadProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmEvaluarHabilidadProveedor.designer.cs">
+      <DependentUpon>FrmEvaluarHabilidadProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAjustarFechasProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAjustarFechasProyecto.designer.cs">
+      <DependentUpon>FrmAjustarFechasProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmConsultarHistorialFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmConsultarHistorialFechas.designer.cs">
+      <DependentUpon>FrmConsultarHistorialFechas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCronogramaProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCronogramaProyecto.designer.cs">
+      <DependentUpon>FrmCronogramaProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaMetaProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaMetaProyecto.designer.cs">
+      <DependentUpon>FrmNuevaMetaProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoProcesoProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoProcesoProyecto.designer.cs">
+      <DependentUpon>FrmNuevoProcesoProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRevisionTecnica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRevisionTecnica.Designer.cs">
+      <DependentUpon>FrmRevisionTecnica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeleccionarFechaMetasCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeleccionarFechaMetasCompras.Designer.cs">
+      <DependentUpon>FrmSeleccionarFechaMetasCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmEstatusComprasProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmEstatusComprasProyecto.Designer.cs">
+      <DependentUpon>FrmEstatusComprasProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmModulosEstandarCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmModulosEstandarCotizacion.Designer.cs">
+      <DependentUpon>FrmModulosEstandarCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmNuevaCaracteristica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmNuevaCaracteristica.Designer.cs">
+      <DependentUpon>FrmNuevaCaracteristica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pruebas\FrmCalcularCosto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Pruebas\FrmCalcularCosto.Designer.cs">
+      <DependentUpon>FrmCalcularCosto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCapacitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCapacitacion.designer.cs">
+      <DependentUpon>FrmCapacitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCompetencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCompetencias.designer.cs">
+      <DependentUpon>FrmCompetencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCompetenciasAgregarModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCompetenciasAgregarModificar.Designer.cs">
+      <DependentUpon>FrmCompetenciasAgregarModificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmConsultarListaMaestraDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmConsultarListaMaestraDocumentos.Designer.cs">
+      <DependentUpon>FrmConsultarListaMaestraDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCrearEncuesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmCrearEncuesta.Designer.cs">
+      <DependentUpon>FrmCrearEncuesta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmMonitorearEncuestas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmMonitorearEncuestas.Designer.cs">
+      <DependentUpon>FrmMonitorearEncuestas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmPlanDeCapacitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmPlanDeCapacitacion.designer.cs">
+      <DependentUpon>FrmPlanDeCapacitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmPlanificarTiempoExtra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmPlanificarTiempoExtra.designer.cs">
+      <DependentUpon>FrmPlanificarTiempoExtra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmProgramaDeCapacitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmProgramaDeCapacitacion.designer.cs">
+      <DependentUpon>FrmProgramaDeCapacitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmProgramarCapacitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmProgramarCapacitacion.Designer.cs">
+      <DependentUpon>FrmProgramarCapacitacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmRazonBajaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmRazonBajaUsuario.Designer.cs">
+      <DependentUpon>FrmRazonBajaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmTiempoExtraEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmTiempoExtraEmpleado.designer.cs">
+      <DependentUpon>FrmTiempoExtraEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmVacante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmVacante.Designer.cs">
+      <DependentUpon>FrmVacante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmSeleccionarCompetencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmSeleccionarCompetencia.Designer.cs">
+      <DependentUpon>FrmSeleccionarCompetencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmDetallesTicketServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmDetallesTicketServicio.Designer.cs">
+      <DependentUpon>FrmDetallesTicketServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmMonitorServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmMonitorServicio.Designer.cs">
+      <DependentUpon>FrmMonitorServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmNuevaAccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmNuevaAccion.Designer.cs">
+      <DependentUpon>FrmNuevaAccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmNuevoTicketServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Servicio\FrmNuevoTicketServicio.Designer.cs">
+      <DependentUpon>FrmNuevoTicketServicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmGenerarOrdenMtoEquipoComputo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmGenerarOrdenMtoEquipoComputo.Designer.cs">
+      <DependentUpon>FrmGenerarOrdenMtoEquipoComputo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionOrdenTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionOrdenTrabajo.Designer.cs">
+      <DependentUpon>FrmSeleccionOrdenTrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmPartesEstandar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmPartesEstandar.Designer.cs">
+      <DependentUpon>FrmPartesEstandar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRealizarMantenimientoCorrectivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRealizarMantenimientoCorrectivo.designer.cs">
+      <DependentUpon>FrmRealizarMantenimientoCorrectivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRealizarMantenimientoPreventivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRealizarMantenimientoPreventivo.designer.cs">
+      <DependentUpon>FrmRealizarMantenimientoPreventivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmReparadorDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmReparadorDiseno.designer.cs">
+      <DependentUpon>FrmReparadorDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmResumenPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmResumenPendientes.designer.cs">
+      <DependentUpon>FrmResumenPendientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarFabricante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarFabricante.designer.cs">
+      <DependentUpon>FrmSeleccionarFabricante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarFecha.Designer.cs">
+      <DependentUpon>FrmSeleccionarFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarHabilidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarHabilidades.designer.cs">
+      <DependentUpon>FrmSeleccionarHabilidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarMaterialCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarMaterialCatalogo.Designer.cs">
+      <DependentUpon>FrmSeleccionarMaterialCatalogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarPO.designer.cs">
+      <DependentUpon>FrmSeleccionarPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarRevision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarRevision.designer.cs">
+      <DependentUpon>FrmSeleccionarRevision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarRFQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarRFQ.designer.cs">
+      <DependentUpon>FrmSeleccionarRFQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSeleccionarUsuario.designer.cs">
+      <DependentUpon>FrmSeleccionarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSinConexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSinConexion.Designer.cs">
+      <DependentUpon>FrmSinConexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSolidosMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmSolidosMaterial.Designer.cs">
+      <DependentUpon>FrmSolidosMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmVisorPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmVisorPDF.Designer.cs">
+      <DependentUpon>FrmVisorPDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\Ventana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmBajarDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmBajarDiseno.designer.cs">
+      <DependentUpon>FrmBajarDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCambiosDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCambiosDiseno.designer.cs">
+      <DependentUpon>FrmCambiosDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmGenerarVistaPreviaSubensamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmGenerarVistaPreviaSubensamble.Designer.cs">
+      <DependentUpon>FrmGenerarVistaPreviaSubensamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmImprimirFormatoLiberacionDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmImprimirFormatoLiberacionDiseno.Designer.cs">
+      <DependentUpon>FrmImprimirFormatoLiberacionDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmLiberarDisenoMecanico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmLiberarDisenoMecanico.designer.cs">
+      <DependentUpon>FrmLiberarDisenoMecanico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoCambioDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoCambioDiseno.Designer.cs">
+      <DependentUpon>FrmNuevoCambioDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRevisionesModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRevisionesModulo.designer.cs">
+      <DependentUpon>FrmRevisionesModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAdministrarPuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAdministrarPuestos.Designer.cs">
+      <DependentUpon>FrmAdministrarPuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAgregarDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAgregarDocumento.Designer.cs">
+      <DependentUpon>FrmAgregarDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAltaEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAltaEmpleado.Designer.cs">
+      <DependentUpon>FrmAltaEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAltaEquipoTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmAltaEquipoTrabajo.Designer.cs">
+      <DependentUpon>FrmAltaEquipoTrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEditarInformacionEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEditarInformacionEmpleado.designer.cs">
+      <DependentUpon>FrmEditarInformacionEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEquipoComputoAsignado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEquipoComputoAsignado.Designer.cs">
+      <DependentUpon>FrmEquipoComputoAsignado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEquipoTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEquipoTrabajo.Designer.cs">
+      <DependentUpon>FrmEquipoTrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEvaluacionesDesempeno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEvaluacionesDesempeno.designer.cs">
+      <DependentUpon>FrmEvaluacionesDesempeno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEvaluarDesempeno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmEvaluarDesempeno.designer.cs">
+      <DependentUpon>FrmEvaluarDesempeno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmMonitorRH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\RH\FrmMonitorRH.Designer.cs">
+      <DependentUpon>FrmMonitorRH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmMonitorSistemas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmMonitorSistemas.Designer.cs">
+      <DependentUpon>FrmMonitorSistemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmSeleccionarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmSeleccionarProveedor.Designer.cs">
+      <DependentUpon>FrmSeleccionarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCatalogoMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmCatalogoMaterial.Designer.cs">
+      <DependentUpon>FrmCatalogoMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfigurarCorreo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmConfigurarCorreo.Designer.cs">
+      <DependentUpon>FrmConfigurarCorreo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAsignarPrivilegio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmAsignarPrivilegio.Designer.cs">
+      <DependentUpon>FrmAsignarPrivilegio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmNuevoRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmNuevoRol.Designer.cs">
+      <DependentUpon>FrmNuevoRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRegistrarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\General\FrmRegistrarMaterial.Designer.cs">
+      <DependentUpon>FrmRegistrarMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAceptacionDisenoMecanico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAceptacionDisenoMecanico.Designer.cs">
+      <DependentUpon>FrmAceptacionDisenoMecanico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAgregarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAgregarMaterial.Designer.cs">
+      <DependentUpon>FrmAgregarMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAgregarTermino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAgregarTermino.Designer.cs">
+      <DependentUpon>FrmAgregarTermino.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAprobarDisenoModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmAprobarDisenoModulo.designer.cs">
+      <DependentUpon>FrmAprobarDisenoModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmBugsProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmBugsProyecto.Designer.cs">
+      <DependentUpon>FrmBugsProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmComentariosRevisionDrawing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmComentariosRevisionDrawing.Designer.cs">
+      <DependentUpon>FrmComentariosRevisionDrawing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCopiarMaterialProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCopiarMaterialProyecto.Designer.cs">
+      <DependentUpon>FrmCopiarMaterialProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesBug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesBug.Designer.cs">
+      <DependentUpon>FrmDetallesBug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesModulo.Designer.cs">
+      <DependentUpon>FrmDetallesModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesRequerimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesRequerimiento.Designer.cs">
+      <DependentUpon>FrmDetallesRequerimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesTopico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDetallesTopico.Designer.cs">
+      <DependentUpon>FrmDetallesTopico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDisenoMecanico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmDisenoMecanico.Designer.cs">
+      <DependentUpon>FrmDisenoMecanico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmElementoModoFalla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmElementoModoFalla.designer.cs">
+      <DependentUpon>FrmElementoModoFalla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmInformacionModoFalla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmInformacionModoFalla.designer.cs">
+      <DependentUpon>FrmInformacionModoFalla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmMaterialProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmMaterialProyecto.Designer.cs">
+      <DependentUpon>FrmMaterialProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmMonitorCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Compras\FrmMonitorCompras.Designer.cs">
+      <DependentUpon>FrmMonitorCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmModulosProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmModulosProyecto.designer.cs">
+      <DependentUpon>FrmModulosProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmMonitorProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmMonitorProyecto.designer.cs">
+      <DependentUpon>FrmMonitorProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaJunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaJunta.Designer.cs">
+      <DependentUpon>FrmNuevaJunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaParteSubensamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaParteSubensamble.Designer.cs">
+      <DependentUpon>FrmNuevaParteSubensamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaRestriccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaRestriccion.designer.cs">
+      <DependentUpon>FrmNuevaRestriccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaTarea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevaTarea.Designer.cs">
+      <DependentUpon>FrmNuevaTarea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoBug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoBug.Designer.cs">
+      <DependentUpon>FrmNuevoBug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoElemento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoElemento.designer.cs">
+      <DependentUpon>FrmNuevoElemento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoKeyitem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoKeyitem.Designer.cs">
+      <DependentUpon>FrmNuevoKeyitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoModulo.designer.cs">
+      <DependentUpon>FrmNuevoModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoParametroRequermiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoParametroRequermiento.Designer.cs">
+      <DependentUpon>FrmNuevoParametroRequermiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoPasoModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoPasoModulo.designer.cs">
+      <DependentUpon>FrmNuevoPasoModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoProyecto.Designer.cs">
+      <DependentUpon>FrmNuevoProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoRequerimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoRequerimiento.Designer.cs">
+      <DependentUpon>FrmNuevoRequerimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoSubproyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoSubproyecto.Designer.cs">
+      <DependentUpon>FrmNuevoSubproyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoTopico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmNuevoTopico.Designer.cs">
+      <DependentUpon>FrmNuevoTopico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRechazarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRechazarMaterial.Designer.cs">
+      <DependentUpon>FrmRechazarMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmReportarRequerimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmReportarRequerimientos.designer.cs">
+      <DependentUpon>FrmReportarRequerimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmReporteSincronizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmReporteSincronizacion.Designer.cs">
+      <DependentUpon>FrmReporteSincronizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRequerimientosProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRequerimientosProyecto.Designer.cs">
+      <DependentUpon>FrmRequerimientosProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRevisarDrawing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmRevisarDrawing.designer.cs">
+      <DependentUpon>FrmRevisarDrawing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSecuenciaModulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSecuenciaModulo.Designer.cs">
+      <DependentUpon>FrmSecuenciaModulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeguimientoEtapa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeguimientoEtapa.designer.cs">
+      <DependentUpon>FrmSeguimientoEtapa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmPlanTrabajoPlano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmPlanTrabajoPlano.Designer.cs">
+      <DependentUpon>FrmPlanTrabajoPlano.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeleccionarRequerimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeleccionarRequerimiento.Designer.cs">
+      <DependentUpon>FrmSeleccionarRequerimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSolicitudesRequerimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSolicitudesRequerimientos.designer.cs">
+      <DependentUpon>FrmSolicitudesRequerimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSubirDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSubirDiseno.Designer.cs">
+      <DependentUpon>FrmSubirDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmTopicosProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmTopicosProyecto.Designer.cs">
+      <DependentUpon>FrmTopicosProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Pruebas\FrmOrdenarCarpetasSolid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Pruebas\FrmOrdenarCarpetasSolid.Designer.cs">
+      <DependentUpon>FrmOrdenarCarpetasSolid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmPlanMantenimientoPreventivoEquipoComputo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmPlanMantenimientoPreventivoEquipoComputo.Designer.cs">
+      <DependentUpon>FrmPlanMantenimientoPreventivoEquipoComputo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmRegistrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Sistemas\FrmRegistrar.Designer.cs">
+      <DependentUpon>FrmRegistrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmEditarCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmEditarCotizacion.Designer.cs">
+      <DependentUpon>FrmEditarCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmInformacionGeneralCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmInformacionGeneralCotizacion.Designer.cs">
+      <DependentUpon>FrmInformacionGeneralCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmNuevaCotizacion2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmNuevaCotizacion2.designer.cs">
+      <DependentUpon>FrmNuevaCotizacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmMonitorVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmMonitorVentas.Designer.cs">
+      <DependentUpon>FrmMonitorVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmMonitorVentas2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmMonitorVentas2.Designer.cs">
+      <DependentUpon>FrmMonitorVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmNuevaCotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmNuevaCotizacion.Designer.cs">
+      <DependentUpon>FrmNuevaCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmListaPokayoke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmListaPokayoke.Designer.cs">
+      <DependentUpon>FrmListaPokayoke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmProcesoManufactura2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmProcesoManufactura2.Designer.cs">
+      <DependentUpon>FrmProcesoManufactura2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarModeloProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarModeloProducto.Designer.cs">
+      <DependentUpon>FrmRegistrarModeloProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarNuevoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarNuevoProducto.Designer.cs">
+      <DependentUpon>FrmRegistrarNuevoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarProductoComponente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarProductoComponente.Designer.cs">
+      <DependentUpon>FrmRegistrarProductoComponente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarSubensamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarSubensamble.Designer.cs">
+      <DependentUpon>FrmRegistrarSubensamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarVariante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarVariante.Designer.cs">
+      <DependentUpon>FrmRegistrarVariante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarVarianteSubensamble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistrarVarianteSubensamble.Designer.cs">
+      <DependentUpon>FrmRegistrarVarianteSubensamble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistroProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmRegistroProducto.Designer.cs">
+      <DependentUpon>FrmRegistroProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmDescripcionProductoRTF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Ventas\FrmDescripcionProductoRTF.Designer.cs">
+      <DependentUpon>FrmDescripcionProductoRTF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGaleria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGaleria.Designer.cs">
+      <DependentUpon>FrmGaleria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRTF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRTF.Designer.cs">
+      <DependentUpon>FrmRTF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CB_Forms\Fabricacion\FrmMonitorFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmMonitorFabricacion.Designer.cs">
+      <DependentUpon>FrmMonitorFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmSelecProveedoresFabricacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Fabricacion\FrmSelecProveedoresFabricacion.Designer.cs">
+      <DependentUpon>FrmSelecProveedoresFabricacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmAdministrarProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proveedores\FrmAdministrarProveedores.Designer.cs">
+      <DependentUpon>FrmAdministrarProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCargarProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmCargarProyecto.Designer.cs">
+      <DependentUpon>FrmCargarProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmPlanosProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmPlanosProyecto.Designer.cs">
+      <DependentUpon>FrmPlanosProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmResumenProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmResumenProyecto.Designer.cs">
+      <DependentUpon>FrmResumenProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeleccionarTipoExtrawork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSeleccionarTipoExtrawork.Designer.cs">
+      <DependentUpon>FrmSeleccionarTipoExtrawork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSubirPlanoDXF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSubirPlanoDXF.Designer.cs">
+      <DependentUpon>FrmSubirPlanoDXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSubirPlanoPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CB_Forms\Proyectos\FrmSubirPlanoPDF.Designer.cs">
+      <DependentUpon>FrmSubirPlanoPDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SummaryCost.cs" />
+    <Compile Include="Tests\TestingFw.cs" />
+    <EmbeddedResource Include="CB_Controles\AudiselBotonSalida.resx">
+      <DependentUpon>AudiselBotonSalida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Controles\AudiselComboBox.resx">
+      <DependentUpon>AudiselComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Controles\AudiselNotification.resx">
+      <DependentUpon>AudiselNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Controles\AudiselTituloForm.resx">
+      <DependentUpon>AudiselTituloForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Controles\NiuTriViu.resx">
+      <DependentUpon>NiuTriViu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Controles\UserControlTest.resx">
+      <DependentUpon>UserControlTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Almacen\FrmMovimientosAlmacen.resx">
+      <DependentUpon>FrmMovimientosAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Almacen\FrmAlmacen.resx">
+      <DependentUpon>FrmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Almacen\FrmAltaAlmacenDesdePO.resx">
+      <DependentUpon>FrmAltaAlmacenDesdePO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Almacen\FrmBajaAlmacen.resx">
+      <DependentUpon>FrmBajaAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\8Ds\Frm8DsD1.resx">
+      <DependentUpon>Frm8DsD1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\8Ds\Frm8DsD2.resx">
+      <DependentUpon>Frm8DsD2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\8Ds\Frm8DsD3.resx">
+      <DependentUpon>Frm8DsD3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\8Ds\Frm8DsD4.resx">
+      <DependentUpon>Frm8DsD4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\8Ds\Frm8DsD5.resx">
+      <DependentUpon>Frm8DsD5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\8Ds\Frm8DsD6.resx">
+      <DependentUpon>Frm8DsD6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmAgregarPoliticaCalidad.resx">
+      <DependentUpon>FrmAgregarPoliticaCalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmAnalisisNcCliente.resx">
+      <DependentUpon>FrmAnalisisNcCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmAnalisisNcInterna.resx">
+      <DependentUpon>FrmAnalisisNcInterna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmAuditar5S.resx">
+      <DependentUpon>FrmAuditar5S.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmCrearNuevoDefecto.resx">
+      <DependentUpon>FrmCrearNuevoDefecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmComentariosNoConformidad.resx">
+      <DependentUpon>FrmComentariosNoConformidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmGenerarValeSalidaPendienteTratamiento.resx">
+      <DependentUpon>FrmGenerarValeSalidaPendienteTratamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmInspeccionarEnsambleModulo.resx">
+      <DependentUpon>FrmInspeccionarEnsambleModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmInspeccionPiezaFabricada2.resx">
+      <DependentUpon>FrmInspeccionPiezaFabricada2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmInspeccionPiezaFabricada.resx">
+      <DependentUpon>FrmInspeccionPiezaFabricada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmLiberarDefecto.resx">
+      <DependentUpon>FrmLiberarDefecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmLiberarNoConformidad.resx">
+      <DependentUpon>FrmLiberarNoConformidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmManualDeCalidad.resx">
+      <DependentUpon>FrmManualDeCalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmMonitorCalidad2.resx">
+      <DependentUpon>FrmMonitorCalidad2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmMonitorCalidad.resx">
+      <DependentUpon>FrmMonitorCalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmNuevoPuntoInspeccion5S.resx">
+      <DependentUpon>FrmNuevoPuntoInspeccion5S.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmRecibirPiezaTratamiento.resx">
+      <DependentUpon>FrmRecibirPiezaTratamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmRegistrarArchivo.resx">
+      <DependentUpon>FrmRegistrarArchivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmResultadosInspeccion2.resx">
+      <DependentUpon>FrmResultadosInspeccion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmResultadosInspeccion.resx">
+      <DependentUpon>FrmResultadosInspeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\FrmValeSalidaCalidad.resx">
+      <DependentUpon>FrmValeSalidaCalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\KPIs\FrmAccionesKPIs.resx">
+      <DependentUpon>FrmAccionesKPIs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\KPIs\FrmAgregarAccionesIndicadorKPI.resx">
+      <DependentUpon>FrmAgregarAccionesIndicadorKPI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\KPIs\FrmBuscadorKPIs.resx">
+      <DependentUpon>FrmBuscadorKPIs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Calidad\KPIs\FrmVisorKPILinea.resx">
+      <DependentUpon>FrmVisorKPILinea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Clientes\FrmAdministrarClientes.resx">
+      <DependentUpon>FrmAdministrarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Clientes\FrmAdministrarProductoCliente.resx">
+      <DependentUpon>FrmAdministrarProductoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Clientes\Producto\FrmEditarProductoCliente.resx">
+      <DependentUpon>FrmEditarProductoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Clientes\Producto\FrmNuevoComponenteProductoCliente.resx">
+      <DependentUpon>FrmNuevoComponenteProductoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Clientes\Producto\FrmNuevoModeloProductoCliente.resx">
+      <DependentUpon>FrmNuevoModeloProductoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Clientes\Producto\FrmNuevoProductoCliente.resx">
+      <DependentUpon>FrmNuevoProductoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmAgregarPo.resx">
+      <DependentUpon>FrmAgregarPo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmAgregarRfq.resx">
+      <DependentUpon>FrmAgregarRfq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmAgregarTerminoPago.resx">
+      <DependentUpon>FrmAgregarTerminoPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmAgregarPartidaPO.resx">
+      <DependentUpon>FrmAgregarPartidaPO.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmAgregarPartidaRFQ.resx">
+      <DependentUpon>FrmAgregarPartidaRFQ.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmCancelarPo.resx">
+      <DependentUpon>FrmCancelarPo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmCapturarCotizacionMaterial.resx">
+      <DependentUpon>FrmCapturarCotizacionMaterial.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmDesvincularProveedorFavorito.resx">
+      <DependentUpon>FrmDesvincularProveedorFavorito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmCopiarRFQ.resx">
+      <DependentUpon>FrmCopiarRFQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmDesglosarPartidaPO.resx">
+      <DependentUpon>FrmDesglosarPartidaPO.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmDesglosarPO.resx">
+      <DependentUpon>FrmDesglosarPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmEnviarPO.resx">
+      <DependentUpon>FrmEnviarPO.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmEnviarRFQ.resx">
+      <DependentUpon>FrmEnviarRFQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmMetasCompras.resx">
+      <DependentUpon>FrmMetasCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmMonitorCompras2.resx">
+      <DependentUpon>FrmMonitorCompras2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmPOs.resx">
+      <DependentUpon>FrmPOs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmRFQs.resx">
+      <DependentUpon>FrmRFQs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmSeleccionarProveedorMultiplesRequisiciones.resx">
+      <DependentUpon>FrmSeleccionarProveedorMultiplesRequisiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmSeleccionarProveedorParaPieza.resx">
+      <DependentUpon>FrmSeleccionarProveedorParaPieza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmSelectorFechaCompra.resx">
+      <DependentUpon>FrmSelectorFechaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmVerCotizacionesMaterial.resx">
+      <DependentUpon>FrmVerCotizacionesMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Debug\FrmActualizarMetas.resx">
+      <DependentUpon>FrmActualizarMetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ensamble\FrmMonitorEnsamble.resx">
+      <DependentUpon>FrmMonitorEnsamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ensamble\FrmNuevaActividad.resx">
+      <DependentUpon>FrmNuevaActividad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ensamble\FrmRazonRetrabajo.resx">
+      <DependentUpon>FrmRazonRetrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ensamble\FrmSeguimientoEnsamble.resx">
+      <DependentUpon>FrmSeguimientoEnsamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAjustarFactoresProcesoFabricacion.resx">
+      <DependentUpon>FrmAjustarFactoresProcesoFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAjustarTiemposFabricacion.resx">
+      <DependentUpon>FrmAjustarTiemposFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAsignacionesFabricacion.resx">
+      <DependentUpon>FrmAsignacionesFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAsignarMultiplesProcesosFabricacion.resx">
+      <DependentUpon>FrmAsignarMultiplesProcesosFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAsignarProcesoFabricacion2.resx">
+      <DependentUpon>FrmAsignarProcesoFabricacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmEstatusPlanos.resx">
+      <DependentUpon>FrmEstatusPlanos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmEstimarTiempoFabricacion.resx">
+      <DependentUpon>FrmEstimarTiempoFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAsignarProcesoFabricacion.resx">
+      <DependentUpon>FrmAsignarProcesoFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAgregarProcesoPlano.resx">
+      <DependentUpon>FrmAgregarProcesoPlano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmAgregarProcesoPlano2.resx">
+      <DependentUpon>FrmAgregarProcesoPlano2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmMetasFabricacion.resx">
+      <DependentUpon>FrmMetasFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmMonitorFabricacion2.resx">
+      <DependentUpon>FrmMonitorFabricacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmNuevaMetaFabricacion.resx">
+      <DependentUpon>FrmNuevaMetaFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmNuevaOperacionFabricacion.resx">
+      <DependentUpon>FrmNuevaOperacionFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmDetallesPlanoFabricacion.resx">
+      <DependentUpon>FrmDetallesPlanoFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmEntregarPiezaFabricada.resx">
+      <DependentUpon>FrmEntregarPiezaFabricada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmGenerarValeSalidaFabricacion.resx">
+      <DependentUpon>FrmGenerarValeSalidaFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmNuevoFactor.resx">
+      <DependentUpon>FrmNuevoFactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmNuevoFactorValor.resx">
+      <DependentUpon>FrmNuevoFactorValor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmPlanoUrgencia.resx">
+      <DependentUpon>FrmPlanoUrgencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmPlanTrabajoPlano.resx">
+      <DependentUpon>FrmPlanTrabajoPlano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmProduccion.resx">
+      <DependentUpon>FrmProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmRegistrarPlanoFueraDelSistema.resx">
+      <DependentUpon>FrmRegistrarPlanoFueraDelSistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmReporteFabricacion.resx">
+      <DependentUpon>FrmReporteFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmSeleccionarMaterialFabricacion.resx">
+      <DependentUpon>FrmSeleccionarMaterialFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmTiempoFabricacion.resx">
+      <DependentUpon>FrmTiempoFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\Terminal\FrmDetenerProcesoFabricacion.resx">
+      <DependentUpon>FrmDetenerProcesoFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\Terminal\FrmProcesosFabricacionAsignados.resx">
+      <DependentUpon>FrmProcesosFabricacionAsignados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\Terminal\FrmProcesosFabricacionTablet.resx">
+      <DependentUpon>FrmProcesosFabricacionTablet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\Terminal\FrmTerminalFabricacion.resx">
+      <DependentUpon>FrmTerminalFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Finanzas\FrmActualizarEstatusCuenta.resx">
+      <DependentUpon>FrmActualizarEstatusCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Finanzas\FrmCuentasPorPagar.resx">
+      <DependentUpon>FrmCuentasPorPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Finanzas\FrmGenerarReportePO.resx">
+      <DependentUpon>FrmGenerarReportePO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Finanzas\FrmHistorialPagos.resx">
+      <DependentUpon>FrmHistorialPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Finanzas\FrmPagarFactura.resx">
+      <DependentUpon>FrmPagarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Finanzas\FrmRevisionFinanciera.resx">
+      <DependentUpon>FrmRevisionFinanciera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAccesoriosMaterial.resx">
+      <DependentUpon>FrmAccesoriosMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAdministrarFabricantes.resx">
+      <DependentUpon>FrmAdministrarFabricantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAdministrarRoles.resx">
+      <DependentUpon>FrmAdministrarRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAdministrarUsuarios.resx">
+      <DependentUpon>FrmAdministrarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAgregarPuntosPrograma.resx">
+      <DependentUpon>FrmAgregarPuntosPrograma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAsignarHabilidad.resx">
+      <DependentUpon>FrmAsignarHabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmBajarArchivos.resx">
+      <DependentUpon>FrmBajarArchivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmBuscadorMaterialDescripcion2.resx">
+      <DependentUpon>FrmBuscadorMaterialDescripcion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmBuscarMaterial.resx">
+      <DependentUpon>FrmBuscarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmBuscarDocumentoCompras.resx">
+      <DependentUpon>FrmBuscarDocumentoCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmBuscarRequisicionMiscelaneos.resx">
+      <DependentUpon>FrmBuscarRequisicionMiscelaneos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmCalendario.resx">
+      <DependentUpon>FrmCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmCantidadMaterial.resx">
+      <DependentUpon>FrmCantidadMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmCatalogoMaterial2.resx">
+      <DependentUpon>FrmCatalogoMaterial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmCerrarProceso.resx">
+      <DependentUpon>FrmCerrarProceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmCompararSolidWorks.resx">
+      <DependentUpon>FrmCompararSolidWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmConfiguracion.resx">
+      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmConfigurarAccesoriosMaterial.resx">
+      <DependentUpon>FrmConfigurarAccesoriosMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmConfirmarSeguro.resx">
+      <DependentUpon>FrmConfirmarSeguro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmConsultarEncuesta.resx">
+      <DependentUpon>FrmConsultarEncuesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmDetallesMaterialCatalogo.resx">
+      <DependentUpon>FrmDetallesMaterialCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmDetallesMaterialProyecto.resx">
+      <DependentUpon>FrmDetallesMaterialProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmDialogoConfirmacion.resx">
+      <DependentUpon>FrmDialogoConfirmacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmEditarContacto.resx">
+      <DependentUpon>FrmEditarContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmEscanear.resx">
+      <DependentUpon>FrmEscanear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmEscanearPlano.resx">
+      <DependentUpon>FrmEscanearPlano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmEstadisticasMaterial.resx">
+      <DependentUpon>FrmEstadisticasMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmEvaluarTopicosHabilidad.resx">
+      <DependentUpon>FrmEvaluarTopicosHabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmFiltrarDatos.resx">
+      <DependentUpon>FrmFiltrarDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmHistorialMantenimiento.resx">
+      <DependentUpon>FrmHistorialMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmIncumplimientoProceso.resx">
+      <DependentUpon>FrmIncumplimientoProceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmIngresarComentario.resx">
+      <DependentUpon>FrmIngresarComentario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmIngresarContrasena.resx">
+      <DependentUpon>FrmIngresarContrasena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmIngresarSubEnsamble.resx">
+      <DependentUpon>FrmIngresarSubEnsamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmIngresarSubensamble2.resx">
+      <DependentUpon>FrmIngresarSubensamble2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmInicio.resx">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmMiMonitor.resx">
+      <DependentUpon>FrmMiMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRegistrarMaterialUrgente.resx">
+      <DependentUpon>FrmRegistrarMaterialUrgente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRestringirNumeroParte.resx">
+      <DependentUpon>FrmRestringirNumeroParte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Librerias\FrmConfigurarLibreriaDme.resx">
+      <DependentUpon>FrmConfigurarLibreriaDme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmLineaTamano.resx">
+      <DependentUpon>FrmLineaTamano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmNuevaActividadMantenimiento.resx">
+      <DependentUpon>FrmNuevaActividadMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmNuevaCategoria.resx">
+      <DependentUpon>FrmNuevaCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRealizarEncuesta.resx">
+      <DependentUpon>FrmRealizarEncuesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmConsultarAccionesAuditoria.resx">
+      <DependentUpon>FrmConsultarAccionesAuditoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRegistrarFabricante.resx">
+      <DependentUpon>FrmRegistrarFabricante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarMaterialCatalogo2.resx">
+      <DependentUpon>FrmSeleccionarMaterialCatalogo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmVincularRequisicionesRfq.resx">
+      <DependentUpon>FrmVincularRequisicionesRfq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmVisorImagen.resx">
+      <DependentUpon>FrmVisorImagen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Librerias\FrmLibreriasDme.resx">
+      <DependentUpon>FrmLibreriasDme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Librerias\FrmRegistrarLibreriaDme.resx">
+      <DependentUpon>FrmRegistrarLibreriaDme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Mantenimiento\FrmMonitorMantenimiento.resx">
+      <DependentUpon>FrmMonitorMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Operaciones\FrmMonitorOperaciones.resx">
+      <DependentUpon>FrmMonitorOperaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmAgregarCorreoAlterno.resx">
+      <DependentUpon>FrmAgregarCorreoAlterno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmBuscadorNumeroPartePorProyecto.resx">
+      <DependentUpon>FrmBuscadorNumeroPartePorProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmMostrarMaterialCancelado.resx">
+      <DependentUpon>FrmMostrarMaterialCancelado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmTareas.resx">
+      <DependentUpon>FrmTareas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmAgregarPokayoke.resx">
+      <DependentUpon>FrmAgregarPokayoke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmAlcanceProyecto.resx">
+      <DependentUpon>FrmAlcanceProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmCostosComprasProyecto.resx">
+      <DependentUpon>FrmCostosComprasProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmCrearNuevoAlcance.resx">
+      <DependentUpon>FrmCrearNuevoAlcance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmEditarCotizacion2.resx">
+      <DependentUpon>FrmEditarCotizacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proveedores\FrmEvaluacionesProveedor.resx">
+      <DependentUpon>FrmEvaluacionesProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proveedores\FrmEvaluarDesempenoProveedores.resx">
+      <DependentUpon>FrmEvaluarDesempenoProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proveedores\FrmEvaluarHabilidadProveedor.resx">
+      <DependentUpon>FrmEvaluarHabilidadProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmAjustarFechasProyecto.resx">
+      <DependentUpon>FrmAjustarFechasProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmConsultarHistorialFechas.resx">
+      <DependentUpon>FrmConsultarHistorialFechas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmCronogramaProyecto.resx">
+      <DependentUpon>FrmCronogramaProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevaMetaProyecto.resx">
+      <DependentUpon>FrmNuevaMetaProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoProcesoProyecto.resx">
+      <DependentUpon>FrmNuevoProcesoProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmRevisionTecnica.resx">
+      <DependentUpon>FrmRevisionTecnica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSeleccionarFechaMetasCompras.resx">
+      <DependentUpon>FrmSeleccionarFechaMetasCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmEstatusComprasProyecto.resx">
+      <DependentUpon>FrmEstatusComprasProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmModulosEstandarCotizacion.resx">
+      <DependentUpon>FrmModulosEstandarCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmNuevaCaracteristica.resx">
+      <DependentUpon>FrmNuevaCaracteristica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pruebas\FrmCalcularCosto.resx">
+      <DependentUpon>FrmCalcularCosto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmCapacitacion.resx">
+      <DependentUpon>FrmCapacitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmCompetencias.resx">
+      <DependentUpon>FrmCompetencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmCompetenciasAgregarModificar.resx">
+      <DependentUpon>FrmCompetenciasAgregarModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmConsultarListaMaestraDocumentos.resx">
+      <DependentUpon>FrmConsultarListaMaestraDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmCrearEncuesta.resx">
+      <DependentUpon>FrmCrearEncuesta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmMonitorearEncuestas.resx">
+      <DependentUpon>FrmMonitorearEncuestas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmPlanDeCapacitacion.resx">
+      <DependentUpon>FrmPlanDeCapacitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmPlanificarTiempoExtra.resx">
+      <DependentUpon>FrmPlanificarTiempoExtra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmProgramaDeCapacitacion.resx">
+      <DependentUpon>FrmProgramaDeCapacitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmProgramarCapacitacion.resx">
+      <DependentUpon>FrmProgramarCapacitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmRazonBajaUsuario.resx">
+      <DependentUpon>FrmRazonBajaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmTiempoExtraEmpleado.resx">
+      <DependentUpon>FrmTiempoExtraEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmVacante.resx">
+      <DependentUpon>FrmVacante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmSeleccionarCompetencia.resx">
+      <DependentUpon>FrmSeleccionarCompetencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Servicio\FrmDetallesTicketServicio.resx">
+      <DependentUpon>FrmDetallesTicketServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Servicio\FrmMonitorServicio.resx">
+      <DependentUpon>FrmMonitorServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Servicio\FrmNuevaAccion.resx">
+      <DependentUpon>FrmNuevaAccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Servicio\FrmNuevoTicketServicio.resx">
+      <DependentUpon>FrmNuevoTicketServicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Sistemas\FrmGenerarOrdenMtoEquipoComputo.resx">
+      <DependentUpon>FrmGenerarOrdenMtoEquipoComputo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionOrdenTrabajo.resx">
+      <DependentUpon>FrmSeleccionOrdenTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmPartesEstandar.resx">
+      <DependentUpon>FrmPartesEstandar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRealizarMantenimientoCorrectivo.resx">
+      <DependentUpon>FrmRealizarMantenimientoCorrectivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRealizarMantenimientoPreventivo.resx">
+      <DependentUpon>FrmRealizarMantenimientoPreventivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmReparadorDiseno.resx">
+      <DependentUpon>FrmReparadorDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmResumenPendientes.resx">
+      <DependentUpon>FrmResumenPendientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarFabricante.resx">
+      <DependentUpon>FrmSeleccionarFabricante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarFecha.resx">
+      <DependentUpon>FrmSeleccionarFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarHabilidades.resx">
+      <DependentUpon>FrmSeleccionarHabilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarMaterialCatalogo.resx">
+      <DependentUpon>FrmSeleccionarMaterialCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarPO.resx">
+      <DependentUpon>FrmSeleccionarPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarRevision.resx">
+      <DependentUpon>FrmSeleccionarRevision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarRFQ.resx">
+      <DependentUpon>FrmSeleccionarRFQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSeleccionarUsuario.resx">
+      <DependentUpon>FrmSeleccionarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSinConexion.resx">
+      <DependentUpon>FrmSinConexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmSolidosMaterial.resx">
+      <DependentUpon>FrmSolidosMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmVisorPDF.resx">
+      <DependentUpon>FrmVisorPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmBajarDiseno.resx">
+      <DependentUpon>FrmBajarDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmCambiosDiseno.resx">
+      <DependentUpon>FrmCambiosDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmGenerarVistaPreviaSubensamble.resx">
+      <DependentUpon>FrmGenerarVistaPreviaSubensamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmImprimirFormatoLiberacionDiseno.resx">
+      <DependentUpon>FrmImprimirFormatoLiberacionDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmLiberarDisenoMecanico.resx">
+      <DependentUpon>FrmLiberarDisenoMecanico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoCambioDiseno.resx">
+      <DependentUpon>FrmNuevoCambioDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmRevisionesModulo.resx">
+      <DependentUpon>FrmRevisionesModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmAdministrarPuestos.resx">
+      <DependentUpon>FrmAdministrarPuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmAgregarDocumento.resx">
+      <DependentUpon>FrmAgregarDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmAltaEmpleado.resx">
+      <DependentUpon>FrmAltaEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmAltaEquipoTrabajo.resx">
+      <DependentUpon>FrmAltaEquipoTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmEditarInformacionEmpleado.resx">
+      <DependentUpon>FrmEditarInformacionEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmEquipoComputoAsignado.resx">
+      <DependentUpon>FrmEquipoComputoAsignado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmEquipoTrabajo.resx">
+      <DependentUpon>FrmEquipoTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmEvaluacionesDesempeno.resx">
+      <DependentUpon>FrmEvaluacionesDesempeno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmEvaluarDesempeno.resx">
+      <DependentUpon>FrmEvaluarDesempeno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\RH\FrmMonitorRH.resx">
+      <DependentUpon>FrmMonitorRH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Sistemas\FrmMonitorSistemas.resx">
+      <DependentUpon>FrmMonitorSistemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proveedores\FrmSeleccionarProveedor.resx">
+      <DependentUpon>FrmSeleccionarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmCatalogoMaterial.resx">
+      <DependentUpon>FrmCatalogoMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmConfigurarCorreo.resx">
+      <DependentUpon>FrmConfigurarCorreo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmAsignarPrivilegio.resx">
+      <DependentUpon>FrmAsignarPrivilegio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmNuevoRol.resx">
+      <DependentUpon>FrmNuevoRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\General\FrmRegistrarMaterial.resx">
+      <DependentUpon>FrmRegistrarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmAceptacionDisenoMecanico.resx">
+      <DependentUpon>FrmAceptacionDisenoMecanico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmAgregarMaterial.resx">
+      <DependentUpon>FrmAgregarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmAgregarTermino.resx">
+      <DependentUpon>FrmAgregarTermino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmAprobarDisenoModulo.resx">
+      <DependentUpon>FrmAprobarDisenoModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmBugsProyecto.resx">
+      <DependentUpon>FrmBugsProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmComentariosRevisionDrawing.resx">
+      <DependentUpon>FrmComentariosRevisionDrawing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmCopiarMaterialProyecto.resx">
+      <DependentUpon>FrmCopiarMaterialProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmDetallesBug.resx">
+      <DependentUpon>FrmDetallesBug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmDetallesModulo.resx">
+      <DependentUpon>FrmDetallesModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmDetallesRequerimiento.resx">
+      <DependentUpon>FrmDetallesRequerimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmDetallesTopico.resx">
+      <DependentUpon>FrmDetallesTopico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmDisenoMecanico.resx">
+      <DependentUpon>FrmDisenoMecanico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmElementoModoFalla.resx">
+      <DependentUpon>FrmElementoModoFalla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\frmInformacionModoFalla.resx">
+      <DependentUpon>FrmInformacionModoFalla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmMaterialProyecto.resx">
+      <DependentUpon>FrmMaterialProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Compras\FrmMonitorCompras.resx">
+      <DependentUpon>FrmMonitorCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmModulosProyecto.resx">
+      <DependentUpon>FrmModulosProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmMonitorProyecto.resx">
+      <DependentUpon>FrmMonitorProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevaJunta.resx">
+      <DependentUpon>FrmNuevaJunta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevaParteSubensamble.resx">
+      <DependentUpon>FrmNuevaParteSubensamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevaRestriccion.resx">
+      <DependentUpon>FrmNuevaRestriccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevaTarea.resx">
+      <DependentUpon>FrmNuevaTarea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoBug.resx">
+      <DependentUpon>FrmNuevoBug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoElemento.resx">
+      <DependentUpon>FrmNuevoElemento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoKeyitem.resx">
+      <DependentUpon>FrmNuevoKeyitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoModulo.resx">
+      <DependentUpon>FrmNuevoModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoParametroRequermiento.resx">
+      <DependentUpon>FrmNuevoParametroRequermiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoPasoModulo.resx">
+      <DependentUpon>FrmNuevoPasoModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoProyecto.resx">
+      <DependentUpon>FrmNuevoProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoRequerimiento.resx">
+      <DependentUpon>FrmNuevoRequerimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoSubproyecto.resx">
+      <DependentUpon>FrmNuevoSubproyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmNuevoTopico.resx">
+      <DependentUpon>FrmNuevoTopico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmRechazarMaterial.resx">
+      <DependentUpon>FrmRechazarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmReportarRequerimientos.resx">
+      <DependentUpon>FrmReportarRequerimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmReporteSincronizacion.resx">
+      <DependentUpon>FrmReporteSincronizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmRequerimientosProyecto.resx">
+      <DependentUpon>FrmRequerimientosProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmRevisarDrawing.resx">
+      <DependentUpon>FrmRevisarDrawing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSecuenciaModulo.resx">
+      <DependentUpon>FrmSecuenciaModulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSeguimientoEtapa.resx">
+      <DependentUpon>FrmSeguimientoEtapa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSeleccionarRequerimiento.resx">
+      <DependentUpon>FrmSeleccionarRequerimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSolicitudesRequerimientos.resx">
+      <DependentUpon>FrmSolicitudesRequerimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSubirDiseno.resx">
+      <DependentUpon>FrmSubirDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmTopicosProyecto.resx">
+      <DependentUpon>FrmTopicosProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Pruebas\FrmOrdenarCarpetasSolid.resx">
+      <DependentUpon>FrmOrdenarCarpetasSolid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Sistemas\FrmPlanMantenimientoPreventivoEquipoComputo.resx">
+      <DependentUpon>FrmPlanMantenimientoPreventivoEquipoComputo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Sistemas\FrmRegistrar.resx">
+      <DependentUpon>FrmRegistrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmEditarCotizacion.resx">
+      <DependentUpon>FrmEditarCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmInformacionGeneralCotizacion.resx">
+      <DependentUpon>FrmInformacionGeneralCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmNuevaCotizacion2.resx">
+      <DependentUpon>FrmNuevaCotizacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmMonitorVentas.resx">
+      <DependentUpon>FrmMonitorVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmMonitorVentas2.resx">
+      <DependentUpon>FrmMonitorVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmNuevaCotizacion.resx">
+      <DependentUpon>FrmNuevaCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmListaPokayoke.resx">
+      <DependentUpon>FrmListaPokayoke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmProcesoManufactura2.resx">
+      <DependentUpon>FrmProcesoManufactura2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistrarModeloProducto.resx">
+      <DependentUpon>FrmRegistrarModeloProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistrarNuevoProducto.resx">
+      <DependentUpon>FrmRegistrarNuevoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistrarProductoComponente.resx">
+      <DependentUpon>FrmRegistrarProductoComponente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistrarSubensamble.resx">
+      <DependentUpon>FrmRegistrarSubensamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistrarVariante.resx">
+      <DependentUpon>FrmRegistrarVariante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistrarVarianteSubensamble.resx">
+      <DependentUpon>FrmRegistrarVarianteSubensamble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmRegistroProducto.resx">
+      <DependentUpon>FrmRegistroProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Ventas\FrmDescripcionProductoRTF.resx">
+      <DependentUpon>FrmDescripcionProductoRTF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGaleria.resx">
+      <DependentUpon>FrmGaleria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRTF.resx">
+      <DependentUpon>FrmRTF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmMonitorFabricacion.resx">
+      <DependentUpon>FrmMonitorFabricacion.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Fabricacion\FrmSelecProveedoresFabricacion.resx">
+      <DependentUpon>FrmSelecProveedoresFabricacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proveedores\FrmAdministrarProveedores.resx">
+      <DependentUpon>FrmAdministrarProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmCargarProyecto.resx">
+      <DependentUpon>FrmCargarProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmPlanosProyecto.resx">
+      <DependentUpon>FrmPlanosProyecto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmResumenProyecto.resx">
+      <DependentUpon>FrmResumenProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSeleccionarTipoExtrawork.resx">
+      <DependentUpon>FrmSeleccionarTipoExtrawork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSubirPlanoDXF.resx">
+      <DependentUpon>FrmSubirPlanoDXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CB_Forms\Proyectos\FrmSubirPlanoPDF.resx">
+      <DependentUpon>FrmSubirPlanoPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CB_Controles\.svn\entries" />
+    <None Include="CB_Controles\.svn\format" />
+    <None Include="CB_Controles\.svn\pristine\14\1453cda892921aef2d1e72d177b059ea4fce3321.svn-base" />
+    <None Include="CB_Controles\.svn\pristine\31\31fb76e5d9babe97a11fea041081f96ce426107a.svn-base" />
+    <None Include="CB_Controles\.svn\pristine\4a\4a239ab9516f0c7f946a3b21ddf7e0f510b3d513.svn-base" />
+    <None Include="CB_Controles\.svn\wc.db" />
+    <None Include="CB_Controles\.svn\wc.db-journal" />
+    <None Include="cotizacionStruct.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CB_Controles\.svn\tmp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-icon-23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Options.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\details.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\price.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house-128.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Awicons-Vista-Artistic-Add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen-Icons.org-Oxygen-Actions-dialog-ok-apply.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1497748151_plus.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-icon %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf-icon-png-pdf-zum-download-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo-mirror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\banner-maceng1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="audisel_32512.ico" />
+    <None Include="Resources\Zoom-In-icon-16px.png" />
+    <None Include="Resources\Zoom-Out-icon-16px.png" />
+    <None Include="Resources\video_icon_dark.png" />
+    <None Include="Resources\video_icon.png" />
+    <None Include="Resources\Word-icon 24px.png" />
+    <None Include="Resources\Word-icon.png" />
+    <None Include="Resources\Zoom-Out-icon.png" />
+    <None Include="Resources\Zoom-In-icon.png" />
+    <None Include="Resources\Zoom-icon.png" />
+    <None Include="Resources\Zoom-icon1.png" />
+    <None Include="Resources\working.png" />
+    <None Include="Resources\vinculate.png" />
+    <None Include="Resources\User-Interface-Save-As-icon.png" />
+    <None Include="Resources\whiteIcon1.png" />
+    <None Include="Resources\activities.png" />
+    <None Include="Resources\adjunto.png" />
+    <None Include="Resources\accessories_icon.png" />
+    <None Include="Resources\about_icon_48.png" />
+    <Content Include="close.ico" />
+    <Content Include="Companyblocks-02_64.ico" />
+    <Content Include="Companyblocksicon-02.ico" />
+    <Content Include="Companyblocksicon-03.ico" />
+    <Content Include="details.ico" />
+    <Content Include="Resources\alert-24.png" />
+    <None Include="Resources\Custom-reports-icon.png" />
+    <None Include="Resources\Block-icon.png" />
+    <None Include="Resources\assign-task.png" />
+    <None Include="Resources\assign-activity.png" />
+    <None Include="Resources\clean_image.png" />
+    <None Include="Resources\Button_icon_lightGray.jpg" />
+    <None Include="Resources\background-fabricacion.jpg" />
+    <None Include="Resources\calendar-48.png" />
+    <None Include="Resources\complete-48.png" />
+    <None Include="Resources\allUser_32.png" />
+    <None Include="Resources\calibracion_32.png" />
+    <None Include="Resources\courses_48.png" />
+    <None Include="Resources\asignado_32.png" />
+    <None Include="Resources\clock-32.png" />
+    <None Include="Resources\back.png" />
+    <None Include="Resources\align_center.png" />
+    <None Include="Resources\align_center1.png" />
+    <None Include="Resources\align_left.png" />
+    <None Include="Resources\align_right.png" />
+    <None Include="Resources\audisel_logo_grande_test.png" />
+    <None Include="Resources\bullets-icon-16px.png" />
+    <Content Include="Resources\Data-Flow-Chart-icon.png" />
+    <None Include="Resources\important-icon.png" />
+    <None Include="Resources\Filter-List-icon.png" />
+    <None Include="Resources\piezas_compradas.png" />
+    <None Include="Resources\pieza_comprada.bmp" />
+    <None Include="Resources\pieza_comprada.png" />
+    <None Include="Resources\piezas_fabricadas.png" />
+    <None Include="Resources\print_pdf.png" />
+    <None Include="Resources\print-pdf.png" />
+    <None Include="Resources\downloadPdf-gray.png" />
+    <None Include="Resources\imprimir_pdf.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\print.bmp" />
+    <None Include="Resources\print2.png" />
+    <None Include="Resources\print3.png" />
+    <None Include="Resources\paint-icon.png" />
+    <None Include="Resources\Nota.png" />
+    <None Include="Resources\important-icon-16.png" />
+    <None Include="Resources\exitMenuIcon.png" />
+    <None Include="Resources\downloadPdf-gray2.png" />
+    <None Include="Resources\image_not_found.png" />
+    <None Include="Resources\imagen_icono.png" />
+    <None Include="Resources\no_vinculate.png" />
+    <None Include="Resources\export.png" />
+    <None Include="Resources\export2.png" />
+    <None Include="Resources\finiches-process.png" />
+    <None Include="Resources\finiched-process.png" />
+    <None Include="Resources\finished-process.png" />
+    <None Include="Resources\email-setup.png" />
+    <None Include="Resources\DataBase-configuration.png" />
+    <None Include="Resources\ftp_configuration.png" />
+    <None Include="Resources\FTP.png" />
+    <None Include="Resources\plano_test.jpg" />
+    <None Include="Resources\download-file-48.png" />
+    <None Include="Resources\loading-icon-48.png" />
+    <None Include="Resources\locked_48.png" />
+    <None Include="Resources\mouse_draw.png" />
+    <None Include="Resources\mouse_move.png" />
+    <None Include="Resources\mouse_draw.cur" />
+    <None Include="Resources\drawing.png" />
+    <None Include="Resources\produccion-48.png" />
+    <None Include="Resources\price-tag-icon.png" />
+    <None Include="Resources\folder_locked.png" />
+    <None Include="Resources\detenido-a-tiempo.png" />
+    <None Include="Resources\detenido-limite.png" />
+    <None Include="Resources\detenido-tarde.png" />
+    <None Include="Resources\en-proceso-a-tiempo-24.png" />
+    <None Include="Resources\en-proceso-limite-24.png" />
+    <None Include="Resources\en-proceso-tarde-24.png" />
+    <None Include="Resources\pendiente-a-tiempo-24.png" />
+    <None Include="Resources\pendiente-limite-24.png" />
+    <None Include="Resources\pendiente-tarde-24.png" />
+    <None Include="Resources\pdf-48.png" />
+    <None Include="Resources\profile-48.png" />
+    <None Include="Resources\person-icon-256.png" />
+    <None Include="Resources\house-48.png" />
+    <None Include="Resources\pdf-icon24px.png" />
+    <None Include="Resources\ice-48.png" />
+    <None Include="Resources\draft-48.png" />
+    <None Include="Resources\mantenimiento_48.png" />
+    <None Include="Resources\mantenimiento_correctivo.png" />
+    <None Include="Resources\mantenimiento_preventivo.png" />
+    <None Include="Resources\graph_32.png" />
+    <None Include="Resources\polls_48.png" />
+    <None Include="Resources\marker_icon_32.png" />
+    <None Include="Resources\mail_-send_icon48.png" />
+    <None Include="Resources\mail_send_icon48.png" />
+    <None Include="Resources\ok-48.png" />
+    <None Include="Resources\incidente_calidad_48.png" />
+    <None Include="Resources\previous_icon_32.png" />
+    <None Include="Resources\next_icon_32.png" />
+    <None Include="Resources\next_icon_48.png" />
+    <None Include="Resources\previous_icon_48.png" />
+    <None Include="Resources\detener_32.png" />
+    <None Include="Resources\en_proceso_32.png" />
+    <None Include="Resources\marker_icon_48.png" />
+    <None Include="Resources\failure-icon-23216.png" />
+    <None Include="Resources\help_icon_48.png" />
+    <None Include="Resources\pdf_clock.png" />
+    <None Include="Resources\pdf_truckincognito.png" />
+    <None Include="Resources\pdf_reparaciones_48.png" />
+    <None Include="Resources\icono_stp_up_48.png" />
+    <None Include="Resources\icono_stp_down_48.png" />
+    <None Include="Resources\icono_pf_48_up.png" />
+    <None Include="Resources\icono_pdf_down_48.png" />
+    <None Include="Resources\fondoCompanyblocksss_Artboard 2.png" />
+    <None Include="Resources\fondocompany3.png" />
+    <None Include="Resources\fondocompany4.png" />
+    <None Include="Resources\logopositivoCompanyblocks_Artboard 3.png" />
+    <None Include="Resources\image_not_found_32.png" />
+    <None Include="Resources\Paste_32.png" />
+    <None Include="Resources\fondocompanynegro.png" />
+    <None Include="Resources\iso9000.png" />
+    <None Include="Resources\Increase-Font-icon.png" />
+    <None Include="Resources\Decrease-Font-icon.png" />
+    <None Include="Resources\Microsoft-Excel-2013-32-icon.png" />
+    <Content Include="Resources\puzzle.png" />
+    <None Include="Resources\Search_icon.png" />
+    <None Include="Resources\sun.png" />
+    <None Include="Resources\Search-icon1.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\save_temp.png" />
+    <None Include="Resources\solidworks.png" />
+    <None Include="Resources\solid_assembly.png" />
+    <None Include="Resources\solid_parts.png" />
+    <None Include="Resources\statistic-icon.png" />
+    <None Include="Resources\Sync-icon.png" />
+    <None Include="Resources\size_paint.JPG" />
+    <None Include="Resources\size1.JPG" />
+    <None Include="Resources\size2.JPG" />
+    <None Include="Resources\size3.JPG" />
+    <None Include="Resources\size4.JPG" />
+    <None Include="Resources\save_file.png" />
+    <None Include="Resources\save_files.png" />
+    <None Include="Resources\solidworks-rebuild-icon2.jpg" />
+    <None Include="Resources\sldprt-32.png" />
+    <None Include="Resources\sldprt-nuevo.png" />
+    <None Include="Resources\sldprt-modificado.png" />
+    <None Include="Resources\search-icon-48.png" />
+    <None Include="Resources\sldasm-48.png" />
+    <None Include="Resources\sldasm.png" />
+    <None Include="Resources\start-32.png" />
+    <None Include="Resources\stop-48.png" />
+    <None Include="Resources\start-48.png" />
+    <None Include="Resources\reclamo_oficial_48.png" />
+    <None Include="Resources\stp_48.png" />
+    <Content Include="Resources\task-icon.png" />
+    <None Include="Resources\tracing.png" />
+    <None Include="Resources\upload.png" />
+    <None Include="Resources\unlocked_48.png" />
+    <None Include="Resources\upload-file-48.png" />
+    <None Include="Resources\terminado-a-tiempo-24.png" />
+    <None Include="Resources\terminado-limite-24.png" />
+    <None Include="Resources\terminado-tarde-24.png" />
+    <None Include="Resources\team-work-icon-48.png" />
+    <None Include="Resources\terminal-24.png" />
+    <None Include="Resources\terminal-48.png" />
+    <None Include="Resources\terminal.png" />
+    <None Include="Resources\trash_48.png" />
+    <None Include="Resources\trash_32.png" />
+    <None Include="Resources\truck-icon_48.png" />
+    <Content Include="Resources\user-checked.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\copy2.png" />
+    <None Include="Resources\progress_defaultModify2.png" />
+    <None Include="Resources\progress_defaultModify.png" />
+    <None Include="Resources\glossy-red-icon-angle-md4040.png" />
+    <None Include="Resources\WFCdatecircle.png" />
+    <None Include="Resources\red-circle.png" />
+    <None Include="Resources\redcircle2.png" />
+    <None Include="Resources\recircle.png" />
+    <None Include="Resources\progress_default.png" />
+    <None Include="Resources\yelloCircle.png" />
+    <None Include="Resources\greenCircle.jpg" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\Logo-Audisel-sa-de-cv-white.png" />
+    <None Include="Resources\Logo-Audisel-sa-de-cv.png" />
+    <None Include="Resources\Logo_audisel_inc_white.png" />
+    <None Include="Resources\Logo_audisel_inc.png" />
+    <None Include="Resources\xml-512.png" />
+    <None Include="Resources\downloadPdf.png" />
+    <None Include="Resources\reject-icon.png" />
+    <None Include="Resources\Rotation.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\search-icon.png" />
+    <None Include="Resources\histo.png" />
+    <None Include="Resources\historial.png" />
+    <None Include="Resources\factura.png" />
+    <None Include="Resources\images.png" />
+    <None Include="Resources\cb-logo-white-large_preview1.png" />
+    <None Include="Resources\fabricacion.png" />
+    <None Include="Resources\cb-logo-white-large.png" />
+    <None Include="Resources\cb-logo-white-large_preview.png" />
+    <None Include="Resources\cb-logo-black-large_preview.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\door_exit.png" />
+    <None Include="Resources\Button_Icon_Orange.svg.png" />
+    <None Include="Resources\mark.png" />
+    <None Include="Resources\glossy-red-icon-angle-md.png" />
+    <None Include="Resources\Button_Icon_Yellow.svg1.png" />
+    <None Include="Resources\Button_Icon_Yellow.svg.png" />
+    <None Include="Resources\300px-Button_Icon_Green.svg.png" />
+    <None Include="Resources\300px-Button_Icon_Blue.svg.png" />
+    <None Include="Resources\arrows.png" />
+    <Content Include="icono-cb.ico" />
+    <None Include="Resources\approve.png" />
+    <None Include="Resources\apple-icon-60x60.png" />
+    <Content Include="Resources\audisel_32512.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\purchase_order.png" />
+    <None Include="Resources\rfq_wb.png" />
+    <None Include="Resources\rfq %282%29.png" />
+    <None Include="Resources\rfq %281%29.png" />
+    <None Include="Resources\rfq.png" />
+    <None Include="Resources\manu-prod.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.15.1\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.15.1\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
